@@ -1,0 +1,66 @@
+.container-quadros {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.quadros {
+    max-width: 400px;
+    width: 100%;
+    background-color: #DDD;
+
+    box-shadow: 2px 2px 5px #12121256;
+}
+
+.quadros header {
+    background-color: #121212;
+    color: #FFF;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.form-criar {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+}
+
+.form-criar input {
+    outline: none;
+    border: none;
+    max-width: 300px;
+    width: 100%;
+    background-color: transparent;
+
+    border-bottom: 2px solid #FFF;
+    padding: 0.2rem;
+}
+
+.form-criar button {
+    outline: none;
+    border: none;
+
+    height: 30px;
+    width: 35px;
+    margin-left: 0.3rem;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    box-shadow: 2px 2px 5px #12121256;
+
+    transition: all 0.5s;
+}
+
+.form-criar button:hover {
+    color: #FFF;
+    background-color: #121212;
+}

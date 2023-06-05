@@ -1,0 +1,13 @@
+.container {
+    width: 100%;
+    height: calc(100% - 60px);
+    padding-top: 1.5rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container .titulo {
+    margin-bottom: 1rem;
+}
