@@ -14,18 +14,24 @@ function Home() {
                     id: 1,
                     atividade: 'atividade 1',
                     dataCriacao: '2023-06-04',
-                    horaCriacao: '21:19'
+                    horaCriacao: '21:19',
+                    prazoConclusao: '2023-06-20',
+                    prazoDias: 16
                 },
                 {
                     id: 2,
                     atividade: 'atividade 2',
                     dataCriacao: '2023-06-04',
-                    horaCriacao: '22:19'
+                    horaCriacao: '22:19',
+                    prazoConclusao: '2023-06-07',
+                    prazoDias: 3
                 }, {
                     id: 3,
                     atividade: 'atividade 3',
                     dataCriacao: '2023-06-04',
-                    horaCriacao: '23:19'
+                    horaCriacao: '23:19',
+                    prazoConclusao: null,
+                    prazoDias: 0
                 },
             ]
         },
@@ -37,18 +43,24 @@ function Home() {
                     id: 1,
                     atividade: 'atividade 1',
                     dataCriacao: '2023-06-04',
-                    horaCriacao: '21:19'
+                    horaCriacao: '21:19',
+                    prazoConclusao: '2023-06-04',
+                    prazoDias: 0
                 },
                 {
                     id: 2,
                     atividade: 'atividade 2',
                     dataCriacao: '2023-06-04',
-                    horaCriacao: '22:19'
+                    horaCriacao: '22:19',
+                    prazoConclusao: null,
+                    prazoDias: 0
                 }, {
                     id: 3,
                     atividade: 'atividade 3',
                     dataCriacao: '2023-06-04',
-                    horaCriacao: '23:19'
+                    horaCriacao: '23:19',
+                    prazoConclusao: '2023-06-10',
+                    prazoDias: 6
                 },
             ]
         },
@@ -60,18 +72,24 @@ function Home() {
                     id: 1,
                     atividade: 'atividade 1',
                     dataCriacao: '2023-06-04',
-                    horaCriacao: '21:19'
+                    horaCriacao: '21:19',
+                    prazoConclusao: null,
+                    prazoDias: 0
                 },
                 {
                     id: 2,
                     atividade: 'atividade 2',
                     dataCriacao: '2023-06-04',
-                    horaCriacao: '22:19'
+                    horaCriacao: '22:19',
+                    prazoConclusao: null,
+                    prazoDias: 0
                 }, {
                     id: 3,
                     atividade: 'atividade 3',
                     dataCriacao: '2023-06-04',
-                    horaCriacao: '23:19'
+                    horaCriacao: '23:19',
+                    prazoConclusao: '2023-06-10',
+                    prazoDias: 6
                 },
             ]
         },
@@ -83,18 +101,25 @@ function Home() {
                     id: 1,
                     atividade: 'atividade 1',
                     dataCriacao: '2023-06-04',
-                    horaCriacao: '21:19'
+                    horaCriacao: '21:19',
+                    prazoConclusao: '2023-06-04',
+                    prazoDias: 0
                 },
                 {
                     id: 2,
                     atividade: 'atividade 2',
                     dataCriacao: '2023-06-04',
-                    horaCriacao: '22:19'
+                    horaCriacao: '22:19',
+                    prazoConclusao: '2023-06-08',
+                    prazoDias: 4
                 }, {
                     id: 3,
                     atividade: 'atividade 3',
                     dataCriacao: '2023-06-04',
-                    horaCriacao: '23:19'
+                    horaCriacao: '23:19',
+                    prazoConclusao: '2023-06-07',
+                    prazoDias: 3
+
                 },
             ]
         }

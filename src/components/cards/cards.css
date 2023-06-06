@@ -1,0 +1,110 @@
+.area {
+    /* area que contem os cards*/
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0.5rem;
+}
+
+.content-card {
+    background-color: #FFF;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 2px 2px 5px #12121246;
+}
+
+.info-criacao,
+.prazo-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 0.8rem;
+    color: #747474;
+}
+
+.area-titulo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 1rem 0;
+    font-size: 1.5rem;
+}
+
+.area-titulo h1 {
+    font-style: italic;
+}
+
+.area-titulo abbr {
+    cursor: pointer;
+}
+
+.area-botao {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.area-botao button {
+    outline: none;
+    border: none;
+
+    height: 2rem;
+    width: 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50px;
+    cursor: pointer;
+
+    transition: all 0.5s;
+}
+
+.area-botao button:hover,
+.prazo-info button:hover {
+    color: #FFF;
+    background-color: #121212;
+}
+
+.area-prazo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.definir-prazo {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #747474;
+
+    padding: 0.2rem;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.definir-prazo:hover {
+    color: #121212;
+    text-decoration: underline;
+}
+
+.prazo-info {
+    margin-top: 0.8rem;
+}
+
+.prazo-info button {
+    border: none;
+    outline: none;
+
+    padding: 0.3rem 0.5rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+
+    transition: all 0.5s;
+}

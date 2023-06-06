@@ -28,7 +28,7 @@ function Quadros({ dados }) {
                             </button>
                         </form>
                     }
-                    <Cards dados={item.atividades} />
+                    <Cards dados={item.atividades} titulo={item.titulo} />
                 </section>
             ))}
         </div>
