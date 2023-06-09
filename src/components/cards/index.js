@@ -14,8 +14,8 @@ function Cards({
     funMudarCard, funDeletarCard,
     funExcluirPrazo, funMostrarModal
 }) {
-    const [atividades, setAtividades] = useState(dados);
-
+    const [atividades, setAtividades] = useState(dados); 
+    
     function porcentagem(card) {
         if (card.prazoConclusao != null) {
             const dataAtual = Number(funData().replaceAll('-', ""));

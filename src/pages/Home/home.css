@@ -31,3 +31,11 @@
     justify-content: center;
     gap: 0.5rem;
 }
+@media screen and (min-width: 768px) {
+    .content-gabarito{
+        display: flex;
+        gap: 0.6rem;
+        align-items: center;
+        justify-content: center;
+    }
+}

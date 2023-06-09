@@ -38,7 +38,7 @@ function ModalData({ card, abrir, fechar, funDataAtual, atualizarLista, modeloMo
             setInputData('');
             return;
         }
-        if(Number(dataInput) === Number(data)){
+        if (Number(dataInput) === Number(data)) {
             alert('A data de hoje não e válida para vencimento da atividade');
             return;
         }
@@ -72,11 +72,18 @@ function ModalData({ card, abrir, fechar, funDataAtual, atualizarLista, modeloMo
                 style={{ display: abrir }}
                 className='container-definir-prazo'
             >
-                <div className='form-prazo'
+                <div
+                    className='form-prazo'
                     onClick={(e) => clicouFora(e)}
                     id='content'
                 >
-                    <form>
+                    <form
+                        data-aos={abrir === 'block' ?
+                            "zoom-in" :
+                            "zoom-out"
+                        }
+                        data-aos-duration="500"
+                    >
                         <p>
                             {modeloModal === 'data' ?
                                 `Informe um prazo de validade para a atividade "${card.atividade}".` :
