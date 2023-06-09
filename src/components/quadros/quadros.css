@@ -1,13 +1,16 @@
 .container-quadros {
     width: 100%;
 
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+    grid-gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    padding: 0.5rem;
+
+    padding: 1rem;
 }
 
 .quadros {
-    max-width: 400px;
+    max-width: 500px;
     width: 100%;
     background-color: #DDD;
 

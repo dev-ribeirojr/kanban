@@ -8,7 +8,13 @@
 }
 
 .logo {
-    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo img{
+    width: 100%;
+    max-width: 250px;
 }
 
 .icons {

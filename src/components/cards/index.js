@@ -1,62 +1,53 @@
 import './cards.css';
 import { useState } from 'react';
-import { FaPlay, FaEdit, FaTrash, FaBackward, FaForward, FaUndoAlt, FaCheck, FaCheckDouble, FaExclamationCircle } from 'react-icons/fa';
+import {
+    FaPlay, FaEdit,
+    FaTrash, FaBackward,
+    FaForward, FaUndoAlt,
+    FaCheck, FaCheckDouble,
+    FaExclamationCircle
+} from 'react-icons/fa';
 
-function Cards({ dados, titulo }) {
+function Cards({
+    dados, titulo,
+    funData, funConverterData,
+    funMudarCard, funDeletarCard,
+    funExcluirPrazo, funMostrarModal
+}) {
     const [atividades, setAtividades] = useState(dados);
 
-    function converterData(props) {
-        if (props != null) {
-            const data = new Date(props)
-            return (
-                data.toLocaleDateString('pr-br', {
-                    timeZone: 'UTC'
-                })
-            );
-        }
-    }
-    function validarPrazo(props) {
-        if (props != null) {
-            const data = props.replaceAll('-', '');
-
-            if (Number(data) > Number(dataAtual())) {
-                return (
-                    true
-                )
-            }
-            return (
-                false
-            )
-        }
-
-    }
-    function dataAtual() {
-        const data = new Date();
-        return (
-            `${data.getFullYear()}${data.getMonth() + 1 > 9 ?
-                `${data.getMouth() + 1}` :
-                `0${data.getMonth() + 1}`
-            }${data.getDate() > 9 ?
-                `${data.getDate()}` :
-                `0${data.getDate()}`}`
-        )
-    }
-
     function porcentagem(card) {
+        if (card.prazoConclusao != null) {
+            const dataAtual = Number(funData().replaceAll('-', ""));
+            const dataPrazo = Number(card.prazoConclusao.replaceAll("-", ''));
+
+            const dias = dataPrazo - dataAtual;
+            const diaAtualCard = card.prazoDias - dias;
+
+            const result = (diaAtualCard * 100) / card.prazoDias;
+            return result.toFixed(0);
+        }
+    }
+    function corCard(card) {
 
         if (card.prazoDias > 0 && card.prazoConclusao != null) {
 
-            const dataPrazo = card.prazoDias;
-            const prazoatual = Number(dataAtual()) - Number(card.dataCriacao.replaceAll('-', ''))
-            console.log(prazoatual)
-            const result = (prazoatual * 100) / dataPrazo
+            const result = porcentagem(card);
 
-            console.log(result)
-            return result.toFixed()
+            if (result >= 50 && result < 75) {
+                return '#F5F471'
+            } else if (result >= 75 && result < 100) {
+                return '#F5B146'
+            } else if (result >= 100) {
+                return '#FA3028'
+            }
         }
-
     }
-
+    function corTexto(card) {
+        if (porcentagem(card) >= 75) {
+            return '#FFF'
+        }
+    }
     return (
         <section className='area'>
             {atividades.map((card) => (
@@ -64,88 +55,152 @@ function Cards({ dados, titulo }) {
                     key={card.id}
                     className='content-card'
                     style={{
-                        backgroundColor: porcentagem(card) > 60 ?
-                            porcentagem(card) > 75 ?
-                                'orange' : "yellow" :
-                            null
-
+                        backgroundColor: titulo === 'CONCLUÍDO' ?
+                            null :
+                            corCard(card),
+                        color: titulo === 'CONCLUÍDO' ?
+                            '#121212' : corTexto(card)
                     }}
                 >
-                    <div className='info-criacao'>
-                        <p>{converterData(card.dataCriacao)}</p>
+                    <div className='info-criacao'
+                        style={{
+                            color: titulo === 'CONCLUÍDO' ?
+                                null : corTexto(card)
+                        }}
+                    >
+                        <p>{funConverterData(card.dataCriacao)}</p>
                         <p>{card.horaCriacao}</p>
                     </div>
                     <div className='area-titulo'>
                         <h1>{card.atividade}</h1>
 
-                        {validarPrazo(card.prazoConclusao) &&
-                            <abbr title='Atividade Vencida!'>
+                        {titulo != 'CONCLUÍDO' ? porcentagem(card) >= 50 ?
+                            <abbr title={porcentagem(card) > 99 ?
+                                'Atividade Vencida' :
+                                `${porcentagem(card)}% do prazo se passou!!`
+                            }>
                                 <FaExclamationCircle />
-                            </abbr>
+                            </abbr> : null
+                            :
+                            null
                         }
                     </div>
-                    {porcentagem(card)}
 
                     {titulo === 'A FAZER' &&
                         <div className='area-botao'>
-                            <button>
+                            <button
+                                onClick={() => funMudarCard(card, 0, 1)}
+                            >
                                 <FaPlay />
                             </button>
-                            <button>
+                            <button
+                                onClick={() => funMostrarModal(card, 'text')}
+                            >
                                 <FaEdit />
                             </button>
-                            <button>
+                            <button
+                                onClick={() => funDeletarCard(card, 0)}
+                            >
                                 <FaTrash />
                             </button>
                         </div>
                     }
                     {titulo === 'FAZENDO' &&
                         <div className='area-botao'>
-                            <button>
+                            <button
+                                onClick={() => funMudarCard(card, 1, 0)}
+                            >
                                 <FaBackward />
                             </button>
-                            <button>
+                            <button
+                                onClick={() => funMudarCard(card, 1, 2)}
+                            >
                                 <FaForward />
                             </button>
-                            <button>
+                            <button
+                                onClick={() => funDeletarCard(card, 1)}
+                            >
                                 <FaTrash />
                             </button>
                         </div>
                     }
                     {titulo === 'EM ANÁLISE' &&
                         <div className='area-botao'>
-                            <button>
+                            <button
+                                onClick={() => funMudarCard(card, 2, 3)}
+                            >
                                 <FaCheck />
                             </button>
-                            <button>
+                            <button
+                                onClick={() => funMudarCard(card, 2, 0)}
+                            >
                                 <FaUndoAlt />
                             </button>
-                            <button>
+                            <button
+                                onClick={() => funDeletarCard(card, 2)}
+                            >
                                 <FaTrash />
                             </button>
                         </div>
                     }
                     {titulo === 'CONCLUÍDO' &&
-                        <div className='area-botao'>
-                            <button>
+                        <div className='area-botao'
+                            style={{
+                                justifyContent: card.dataConclusao != null ?
+                                    'space-between' :
+                                    'flex-end'
+                            }}
+                        >
+
+                            {card.dataConclusao != null &&
+                                <div className='prazo-info'
+                                    style={{
+                                        color: titulo === 'CONCLUÍDO' ?
+                                            null : corTexto(card),
+                                        gap: 8
+                                    }}
+                                >
+                                    <p>Aprovado em: </p>
+                                    <p>{funConverterData(card.dataConclusao)}</p>
+                                </div>
+                            }
+
+                            <button
+                                onClick={() => funDeletarCard(card, 3)}
+                                style={{
+                                    color: '#36D93E',
+                                }}
+                            >
                                 <FaCheckDouble />
-                            </button>
-                            <button>
-                                <FaTrash />
                             </button>
                         </div>
                     }
                     {titulo === 'A FAZER' || titulo === 'FAZENDO' ?
                         <div className='area-prazo'>
-                            <button className='definir-prazo'>
-                                {card.prazoConclusao === null &&
+                            {card.prazoConclusao === null &&
+                                <button
+                                    onClick={() => funMostrarModal(card, 'data')}
+                                    className='definir-prazo'
+                                >
                                     "Definir prazo de conclusão?"
-                                }
-                            </button>
+                                </button>
+                            }
+
                             {card.prazoConclusao != null &&
-                                <div className='prazo-info'>
-                                    <p>Concluir até: {converterData(card.prazoConclusao)}</p>
-                                    <button>
+                                <div className='prazo-info'
+                                    style={{
+                                        color: corTexto(card)
+                                    }}
+                                >
+                                    <p>Concluir até: {funConverterData(card.prazoConclusao)}</p>
+                                    <button
+                                        onClick={() => funExcluirPrazo(card)}
+                                        className='botao-ecluir-prazo'
+                                        style={{
+                                            backgroundColor: 'transparent',
+                                            color: corTexto(card)
+                                        }}
+                                    >
                                         Excluir?
                                     </button>
                                 </div>
@@ -153,14 +208,17 @@ function Cards({ dados, titulo }) {
                         </div>
                         : null
                     }
-                    {titulo === 'EM ANÁLISE' || titulo === 'CONCLUÍDO' ?
+                    {titulo === 'EM ANÁLISE' ?
                         <div className='area-prazo'>
-                            {card.prazoConclusao != null &&
-                                <div className='prazo-info'>
-                                    <p>Prazo:</p>
-                                    <p>{converterData(card.prazoConclusao)}</p>
-                                </div>
-                            }
+                            <div className='prazo-info'
+                                style={{
+                                    color: titulo === 'CONCLUÍDO' ?
+                                        null : corTexto(card)
+                                }}
+                            >
+                                <p>Finalizado em:</p>
+                                <p>{funConverterData(card.dataConclusao)}</p>
+                            </div>
                         </div>
                         : null
                     }

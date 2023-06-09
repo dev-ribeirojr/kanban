@@ -1,16 +1,17 @@
 .area {
     /* area que contem os cards*/
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    grid-gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     padding: 0.5rem;
 }
 
 .content-card {
     background-color: #FFF;
-    padding: 0.5rem;
+    padding: 0.5rem 0.8rem;
     border-radius: 0.5rem;
     box-shadow: 2px 2px 5px #12121246;
+
 }
 
 .info-criacao,
@@ -25,7 +26,6 @@
 
 .area-titulo {
     display: flex;
-    align-items: center;
     justify-content: space-between;
 
     margin: 1rem 0;
@@ -33,7 +33,10 @@
 }
 
 .area-titulo h1 {
+    text-transform: capitalize;
+    width: 90%;
     font-style: italic;
+    word-wrap: break-word;
 }
 
 .area-titulo abbr {
@@ -44,6 +47,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+
 }
 
 .area-botao button {
@@ -59,12 +63,12 @@
 
     border-radius: 50px;
     cursor: pointer;
+    box-shadow: 2px 2px 5px #12121246;
 
     transition: all 0.5s;
 }
 
-.area-botao button:hover,
-.prazo-info button:hover {
+.area-botao button:hover{
     color: #FFF;
     background-color: #121212;
 }
@@ -73,6 +77,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    margin-top: 1rem;
 }
 
 .definir-prazo {
@@ -93,10 +99,6 @@
     text-decoration: underline;
 }
 
-.prazo-info {
-    margin-top: 0.8rem;
-}
-
 .prazo-info button {
     border: none;
     outline: none;
@@ -107,4 +109,13 @@
     cursor: pointer;
 
     transition: all 0.5s;
+}
+
+.botao-ecluir-prazo {
+    color: #121212;
+    background-color: transparent;
+}
+
+.botao-ecluir-prazo:hover {
+    text-decoration: underline;
 }

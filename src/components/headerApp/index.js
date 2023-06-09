@@ -5,7 +5,10 @@ function HeaderApp() {
     return (
         <header className='header'>
             <div className='logo'>
-                <p>Logo</p>
+                <img
+                    src={require('../../assets/img/logo.png')}
+                    alt='logo'
+                />
             </div>
             <div className='icons'>
                 <a
