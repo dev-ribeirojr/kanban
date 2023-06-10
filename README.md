@@ -10,10 +10,10 @@
 <a href="https://kanban-ribeirojr.netlify.app/" target="_blank">🔗 Acesse o Projeto Aqui</a>
 
 ## 📌 Sobre o Projeto
-Esse projeto e uma espécie de quadro kanban, que contem quatro etapas, começando do quadro em que se encontra as atividades a serem feitas e em seguinda partimos para o quadro de atividades em andamento, são aquelas que ja foram iniciadas, no terceiro quadro e onde as atividades entram e análise, e ali as atividades são aprovadas ou reprovadas, caso seja reprovada a atividade retorna para o primeiro quadro e caso contrario ela e finalizada encontrando-se no quadro de atividades concluídas.
+Esse projeto e uma espécie de quadro kanban, que contem quatro etapas, começando do quadro em que se encontra as atividades a serem feitas e que termina no quandro de atividades concluídas, as etapas são atividades a serem iniciadas, atividades em andamento, atividades em análise e atividades concluídas.
 
 ```
-OBS: Essas atividades serão salvas no localStorage 
+OBS: Essas atividades são salvas no localStorage.
 ```
 
 ## ⚙️ Funções
@@ -26,14 +26,16 @@ OBS: Essas atividades serão salvas no localStorage
 ```
 Essa função abre um modal com um input para preencher com determinado titulo 
 ```
-4 - Também encontra-se uma função que define uma data de conclusão para a atividade.
+4 - Quarta função, caso queira definir um prazo para concluir a atividade, e também poderá exlcuir esse prazo.
 ```
 Quando definido uma data de conclusão os cards são renderizados de acordo com a porcentagem que o prazo se encontra,
-segue o gabarito abaixo:
+e é informado a porcentagem do prazo que se encontra tal atividade, caso ela seja maior que 50%.
 ```
+#### Gabarito de Validade
+
 ![Gabarito](./src/assets/img/redme/gabarito.png)&nbsp;
 
-5 - Quarta função, com o icone de uma lixeira é onde excluí a atividade que se encontra em quase todos os quadros.
+5 - Quinta função, com o icone de uma lixeira é onde excluí a atividade que se encontra em quase todos os quadros.
 
 6 - No quadro de atividades em andamento encontra-se um botão para avançar ou retroceder a atividade.
 
@@ -48,3 +50,11 @@ Reprovando a atividade volta para o primeiro quadro.
 8 - E no ultimo quadro encontra-se somente uma função com o icone de checagem, onde exclúi a atividade.
 
 ![Projeto kanban](./src/assets/img/redme/projeto-kanban.png)&nbsp;
+
+Obs: As funções não está em ordem.
+
+## 🔥🔥 Proximas ideias para o projeto
+
+Pretendo implantar um sistema de login, opções de criação de equipe onde um determinado cargo terá total acesso as funções em quanto outros cargos não terá esse acesso, animações, melhor comunicação com quem irá utilizar o projeto ao invés de apenas alerts igual se encontra atualmente.
+
+## 🔥🔥🔥 Bora pra cima!!
