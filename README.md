@@ -53,8 +53,3 @@ Reprovando a atividade volta para o primeiro quadro.
 
 Obs: As funções não está em ordem.
 
-## 🔥🔥 Proximas ideias para o projeto
-
-Pretendo implantar um sistema de login, opções de criação de equipe onde um determinado cargo terá total acesso as funções em quanto outros cargos não terá esse acesso, animações, melhor comunicação com quem irá utilizar o projeto ao invés de apenas alerts igual se encontra atualmente.
-
-## 🔥🔥🔥 Bora pra cima!!
