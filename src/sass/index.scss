@@ -6,6 +6,7 @@
   box-sizing: border-box;
   font-family: $font-padrao;
   border: none;
+  outline: none;
 }
 
 html,
@@ -14,14 +15,20 @@ body,
   height: 100%;
 }
 
+
+body {
+  background: #121212 url('../assets/fundo.png') center center;
+  background-size: cover;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
 button {
   cursor: pointer;
 }
 
 a {
   text-decoration: none;
-}
-
-input {
-  outline: none;
 }

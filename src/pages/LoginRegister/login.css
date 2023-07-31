@@ -1,4 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+.loading {
+  color: #AA2D77;
+  animation: loading 5s linear infinite;
+  align-self: center;
+}
+
 .loginRegister {
   background: linear-gradient(50deg, #AA2D77, #F16A29);
   height: 100%;
@@ -119,11 +125,6 @@
 }
 .loginRegister .container-login .area-form form button:hover {
   background-color: #F16A29;
-}
-.loginRegister .container-login .area-form form .loading {
-  color: #AA2D77;
-  animation: loading 5s linear infinite;
-  align-self: center;
 }
 
 @keyframes loading {

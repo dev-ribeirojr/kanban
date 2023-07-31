@@ -1,5 +1,11 @@
 @import '../../sass/variaveis.scss';
 
+.loading {
+  color: $cor-primaria;
+  animation: loading 5s linear infinite;
+  align-self: center;
+}
+
 .loginRegister {
   background: linear-gradient(50deg, $cor-primaria, $cor-secundaria);
   height: 100%;
@@ -43,7 +49,7 @@
 
       h1 {
         margin-bottom: 0.5em;
-        
+
       }
 
       p {
@@ -112,10 +118,11 @@
           font-size: 1.2em;
           padding: 8px;
           margin-bottom: 0.5em;
-
           box-shadow: inset 0 0 5px #12121288;
           border-radius: 5px;
         }
+
+        input::placeholder {}
 
         div {
           display: flex;
@@ -145,12 +152,6 @@
           &:hover {
             background-color: $cor-secundaria;
           }
-        }
-
-        .loading {
-          color: $cor-primaria;
-          animation: loading 5s linear infinite;
-          align-self: center;
         }
       }
     }

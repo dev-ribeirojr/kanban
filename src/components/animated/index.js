@@ -1,13 +1,15 @@
 import { TypeAnimation } from "react-type-animation";
 
 export default function Typing({ text, el }) {
+
   return (
     <TypeAnimation
       key={text}
       sequence={[
         `${text}`,
+
         () => {
-          console.log('sequence completed');
+          {/* quando a animação termina */ }
         }
       ]}
       speed={30}

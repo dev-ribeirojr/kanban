@@ -1,11 +1,11 @@
 import { useState, createContext, useEffect } from 'react';
 import { db, auth } from '../services/firebaseConection';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { setDoc, doc, getDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
-import { format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 
 export const AuthContext = createContext({});
 
@@ -43,8 +43,12 @@ export default function AuthProvider({ children }) {
           uid: uidUser,
           name: docSnap.data().name,
           email: value.user.email,
-          profileUrl: docSnap.data().profileUrl
+          profileUrl: docSnap.data().profileUrl,
+          birth: docSnap.data().birth,
+          about: docSnap.data().about,
+          titleProfile: docSnap.data().titleProfile,
         }
+
         setUser(data);
         storageUser(data);
         setLoading(false);
@@ -76,7 +80,9 @@ export default function AuthProvider({ children }) {
           name: name,
           birth: birth,
           createdFormat: new Date(),
-          profileUrl: null
+          profileUrl: null,
+          about: '',
+          titleProfile: ''
         })
           .then(() => {
             let data = {
@@ -85,6 +91,7 @@ export default function AuthProvider({ children }) {
               email: value.user.email,
               birth: birth,
               profileUrl: null,
+              titleProfile: '',
             }
             setUser(data);
             storageUser(data);
@@ -109,6 +116,25 @@ export default function AuthProvider({ children }) {
   }
 
   //deslogar usuário
+  async function logOut() {
+    await signOut(auth)
+      .then(() => {
+        localStorage.removeItem(localStorageKey);
+        setUser(null)
+      })
+      .catch((error) => {
+
+        console.log(error)
+        toast.error('Erro ao sair da conta.')
+      })
+  }
+
+  function handleFormat(date) {
+    const data = parseISO(date);
+    const dataFormat = format(data, "dd/MM/yyyy");
+    return dataFormat;
+  }
+
 
   return (
     <AuthContext.Provider
@@ -116,7 +142,12 @@ export default function AuthProvider({ children }) {
         signed: !!user,
         signUp,
         signIn,
-        loading
+        logOut,
+        setUser,
+        storageUser,
+        handleFormat,
+        loading,
+        user,
       }}
     >
       {children}

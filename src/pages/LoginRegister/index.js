@@ -166,12 +166,12 @@ export default function LoginRegister() {
               {visible.password ?
                 <>
                   <MdVisibility color='#FFF' size={20} />
-                  <p>esconder senha?</p>
+                  <p>ocultar senha?</p>
                 </>
                 :
                 <>
                   <MdVisibilityOff color='#FFF' size={20} />
-                  <p>mostrar senha?</p>
+                  <p>exibir senha?</p>
                 </>
               }
             </div>

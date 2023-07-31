@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+.header {
+  height: 50px;
+  background: linear-gradient(to right, #AA2D77, #F16A29, #AA2D77, #F16A29, #AA2D77);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1em;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+}
+.header section {
+  display: flex;
+  gap: 1em;
+}
+.header section .btn-header {
+  height: 35px;
+  font-size: 1.5em;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.2941176471);
+  color: #FFF;
+  transition: ease-in-out 0.3s;
+}
+.header section .btn-header.btn-icon {
+  width: 35px;
+}
+.header section .btn-header:hover {
+  background-color: #AA2D77;
+  filter: drop-shadow(0 0 2px #FFF);
+  -webkit-filter: drop-shadow(0 0 2px #FFF);
+}
+.header section .img-header {
+  width: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: ease-in-out 0.3s;
+}
+.header section .img-header:hover {
+  filter: drop-shadow(0 0 2px #FFF);
+  -webkit-filter: drop-shadow(0 0 2px #FFF);
+}
+.header section.area-titulo-header h1 {
+  color: #FFF;
+  font-size: 1.5em;
+}
+.header .modal {
+  background-color: rgba(10, 10, 10, 0.2549019608);
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+}
+.header .modal .modal-perfil {
+  position: absolute;
+  width: 250px;
+  background: linear-gradient(45deg, #AA2D77, #F16A29, #AA2D77, #F16A29, #AA2D77);
+  top: 60px;
+  right: 10px;
+  padding: 0.8em;
+  display: flex;
+  flex-direction: column;
+}
+.header .modal .modal-perfil .btn-fechar-perfil {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: rgb(255, 95, 95);
+  border: 1px solid #FFF;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+.header .modal .modal-perfil .btn-fechar-perfil:hover {
+  background-color: rgb(255, 56, 56);
+}
+.header .modal .modal-perfil section {
+  background-color: rgba(255, 255, 255, 0.2941176471);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  color: #FFF;
+}
+.header .modal .modal-perfil section img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+.header .modal .modal-perfil section h2 {
+  text-transform: capitalize;
+}
+.header .modal .modal-perfil section p {
+  text-align: center;
+  width: 200px;
+  word-break: break-all;
+}
+.header .modal a,
+.header .modal button {
+  background-color: rgba(255, 255, 255, 0.2941176471);
+  font-size: 1.2em;
+  text-align: center;
+  padding: 8px 0;
+  font-weight: bold;
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em;
+  transition: ease-in-out 0.5s;
+}
+.header .modal a:hover,
+.header .modal button:hover {
+  background-color: #AA2D77;
+  box-shadow: 0 0 2px #FFF;
+}
+
+@media screen and (max-width: 500px) {
+  .header .area-titulo-header {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=header.css.map */
