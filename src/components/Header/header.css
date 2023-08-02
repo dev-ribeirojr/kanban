@@ -15,6 +15,42 @@
   display: flex;
   gap: 1em;
 }
+.header section .search-friends {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-color: #F16A29;
+  padding: 2px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: ease-in-out 0.5s;
+}
+.header section .search-friends input {
+  width: 0;
+  transition: ease-in-out 0.5s;
+  background-color: transparent;
+  font-size: 1em;
+  color: #FFF;
+}
+.header section .search-friends input::placeholder {
+  color: rgba(255, 255, 255, 0.6588235294);
+}
+.header section .search-friends svg {
+  padding: 2px;
+  background-color: rgba(255, 255, 255, 0.3568627451);
+  border-radius: 5px;
+  transition: ease-in-out 0.3s;
+  margin-right: 1em;
+}
+.header section .search-friends:hover {
+  border: 1px solid #FFF;
+}
+.header section .search-friends:hover svg {
+  border-radius: 50%;
+}
+.header section .search-friends:hover input {
+  width: 200px;
+}
 .header section .btn-header {
   height: 35px;
   font-size: 1.5em;
@@ -38,6 +74,7 @@
 }
 .header section .img-header {
   width: 35px;
+  height: 35px;
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
@@ -69,6 +106,7 @@
   padding: 0.8em;
   display: flex;
   flex-direction: column;
+  border-radius: 5px;
 }
 .header .modal .modal-perfil .btn-fechar-perfil {
   width: 35px;
@@ -91,6 +129,7 @@
   align-items: center;
   padding: 1em;
   color: #FFF;
+  border-radius: 5px;
 }
 .header .modal .modal-perfil section img {
   border-radius: 50%;
@@ -117,14 +156,15 @@
   justify-content: center;
   gap: 0.3em;
   transition: ease-in-out 0.5s;
+  border-radius: 5px;
 }
 .header .modal a:hover,
 .header .modal button:hover {
   background-color: #AA2D77;
-  box-shadow: 0 0 2px #FFF;
+  box-shadow: 0 0 4px #FFF;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .header .area-titulo-header {
     display: none;
   }

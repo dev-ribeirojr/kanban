@@ -1,0 +1,95 @@
+@import '../../sass/variaveis.scss';
+
+.container {
+  height: 100%;
+
+  .main-home {
+    height: 100%;
+    padding: calc(50px + 1em) 1em 1em 1em;
+
+    display: flex;
+    gap: 1em;
+
+    .area-amigos {
+      max-width: 300px;
+      width: 100%;
+      height: 100%;
+    }
+
+    .quadros {
+      width: 100%;
+
+
+      header {
+        height: 50px;
+        background: linear-gradient(60deg, $cor-secundaria, $cor-primaria 50%);
+        box-shadow: 0 0 3px #ffffff80;
+        border-radius: 5px;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0 1em;
+        gap: 1em;
+
+        button,
+        .svg-search {
+          background-color: #dddddd60;
+          padding: 5px;
+          border-radius: 5px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &:hover {
+            background-color: $cor-secundaria;
+          }
+        }
+
+        .search {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          padding: 2px;
+          padding-right: 12px;
+
+          svg {
+            height: 35px;
+            width: 35px;
+            transition: ease-in-out 0.8s;
+          }
+
+          input {
+            width: 0;
+            transition: ease-in-out 0.5s;
+            background-color: transparent;
+            font-size: 1em;
+            color: $cor-branca;
+          }
+
+          input::placeholder {
+            color: #ffffffbb;
+          }
+
+          &:hover {
+            border: 1px solid $cor-secundaria;
+            border-radius: 50px;
+            gap: 1em;
+          }
+
+          &:hover input {
+            width: 200px;
+          }
+
+          &:hover {
+            .svg-search {
+              border-radius: 50%;
+              background-color: $cor-secundaria;
+            }
+          }
+        }
+      }
+    }
+  }
+}

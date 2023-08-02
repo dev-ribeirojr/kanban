@@ -13,8 +13,11 @@ export default function AuthProvider({ children }) {
   const localStorageKey = '@dataUserLogado';
   const navigate = useNavigate();
 
-  const [user, setUser] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const [friends, setFriends] = useState([]);
+  const [loadingFriends, setLoadingFriends] = useState(true);
 
   useEffect(() => {
     async function loadUser() {
@@ -27,7 +30,48 @@ export default function AuthProvider({ children }) {
       setLoading(false);
     }
     loadUser();
+
   }, [])
+
+  // Carregando Amigos do usuário logado
+  useEffect(() => {
+
+    setFriends([])
+    async function loadFriends() {
+      if (user) {
+        user.friends.map(async (uid) => {
+          const friendsRef = doc(db, 'users', uid);
+          handleLoadFriends(friendsRef);
+        })
+      }
+    }
+    loadFriends()
+    return () => { }
+  }, [user])
+
+  // reutilizando a busca e renderização de amigos 
+  async function handleLoadFriends(ref) {
+    await getDoc(ref)
+
+      .then((doc) => {
+        let list = []
+
+        list.push({
+          uid: doc.id,
+          name: doc.data().name,
+          profileUrl: doc.data().profileUrl,
+          titleProfile: doc.data().titleProfile,
+          about: doc.data().about,
+          birth: doc.data().birth
+        })
+        setFriends(friendsList => [...friendsList, ...list])
+        setLoadingFriends(false)
+      })
+      .catch((error) => {
+        console.log(error)
+        setLoadingFriends(false)
+      })
+  }
 
   // logando usuário
   async function signIn(email, password) {
@@ -47,6 +91,7 @@ export default function AuthProvider({ children }) {
           birth: docSnap.data().birth,
           about: docSnap.data().about,
           titleProfile: docSnap.data().titleProfile,
+          friends: docSnap.data().friends
         }
 
         setUser(data);
@@ -82,7 +127,8 @@ export default function AuthProvider({ children }) {
           createdFormat: new Date(),
           profileUrl: null,
           about: '',
-          titleProfile: ''
+          titleProfile: '',
+          friends: [],
         })
           .then(() => {
             let data = {
@@ -92,6 +138,7 @@ export default function AuthProvider({ children }) {
               birth: birth,
               profileUrl: null,
               titleProfile: '',
+              friends: []
             }
             setUser(data);
             storageUser(data);
@@ -135,7 +182,6 @@ export default function AuthProvider({ children }) {
     return dataFormat;
   }
 
-
   return (
     <AuthContext.Provider
       value={{
@@ -148,6 +194,10 @@ export default function AuthProvider({ children }) {
         handleFormat,
         loading,
         user,
+
+        //friends
+        loadingFriends,
+        friends
       }}
     >
       {children}

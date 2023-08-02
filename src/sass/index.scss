@@ -19,6 +19,7 @@ body,
 body {
   background: #121212 url('../assets/fundo.png') center center;
   background-size: cover;
+
 }
 
 ::-webkit-scrollbar {
@@ -27,6 +28,7 @@ body {
 
 button {
   cursor: pointer;
+  transition: ease-in-out 0.3s;
 }
 
 a {

@@ -7,16 +7,18 @@ import avatar from '../../assets/avatar.png';
 import Header from '../../components/Header';
 import { FiUpload } from 'react-icons/fi';
 
-import { BiLoaderCircle, BiEdit } from 'react-icons/bi'
+import { BiLoaderCircle, BiEdit, BiArrowBack } from 'react-icons/bi';
+import { MdLogout } from 'react-icons/md';
 
 import { db, storage } from '../../services/firebaseConection';
 import { doc, updateDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 export default function Profile() {
 
-  const { user, setUser, storageUser, handleFormat } = useContext(AuthContext);
+  const { user, setUser, storageUser, handleFormat, logOut } = useContext(AuthContext);
 
   const [imgUrl, setImgUrl] = useState(user && user.profileUrl)
   const [imgAvatar, setImgAvatar] = useState(null);
@@ -152,6 +154,9 @@ export default function Profile() {
       <section className='profile'>
         <section className='area-profile-border'>
           <section className='area-profile' >
+            <Link to={"/home"} className='return'>
+              <BiArrowBack size={35} color='#FFF' />
+            </Link>
             {imgUrl === null ? (
               <img src={avatar} alt='Foto do perfil' />
             )
@@ -161,18 +166,21 @@ export default function Profile() {
               )
             }
             <h2>{user.name}</h2>
-            <p className='titulo-perfil'>{user.titleProfile}</p>
+            <p className='titulo-perfil'>{user.titleProfile ? user.titleProfile : 'Não possui titulo de perfil'}</p>
             <p>Data de Nasc: {handleFormat(user.birth)}</p>
-            <p><strong>ID:  </strong>{user.uid}</p>
+            <p><strong>ID: </strong>{user.uid}</p>
           </section>
           <section className='sobre'>
             <h3>Sobre</h3>
             <p>
-              {user.about}
+              {user.about ? user.about : 'Não possui resumo'}
             </p>
           </section>
           {!editProfile &&
             <section className='btns-profile'>
+              <button onClick={() => logOut()}>
+                <MdLogout size={25} color="#FFF" /> Sair
+              </button>
               <button onClick={() => setEditProfile(true)}>
                 <BiEdit size={25} color="#FFF" /> Editar Perfil
               </button>

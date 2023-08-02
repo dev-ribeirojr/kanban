@@ -1,19 +1,22 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useRef } from 'react';
 import './header.css';
 import avatar from '../../assets/avatar.png';
 
 import { MdNotificationsNone, MdLogout } from 'react-icons/md';
 import { FiSettings } from 'react-icons/fi';
-import { GiSteampunkGoggles } from 'react-icons/gi';
 import { FaHome, FaUserCog } from 'react-icons/fa'
 
 import { AuthContext } from '../../contexts/auth';
 import { Link } from 'react-router-dom';
+import { BiSearchAlt } from 'react-icons/bi';
 
 export default function Header({ data }) {
 
   const { user, logOut } = useContext(AuthContext);
   const [modal, setModal] = useState(false);
+
+  const [searchWidth, setSearchWidth] = useState(null);
+  const [fetchPeople, setFetchPeople] = useState("");
 
   function fecharModal(e) {
     const modal = document.querySelector('.modal');
@@ -21,6 +24,10 @@ export default function Header({ data }) {
       setModal(!modal);
       return;
     }
+  }
+  function handleOfFocus() {
+    setSearchWidth(null)
+    setFetchPeople('')
   }
 
   return (
@@ -32,10 +39,32 @@ export default function Header({ data }) {
           </Link>
         }
         {data === "home" &&
-          <button className='btn-header'>
-            <GiSteampunkGoggles />
-            Times
-          </button>
+          <div
+            className='search-friends'
+            style={{
+              border: searchWidth === 200 ? '1px solid #FFF' : null
+            }}
+          >
+            <BiSearchAlt
+              color='#FFF'
+              size={35}
+              style={{
+                borderRadius: searchWidth === 200 ? '50%' : null
+              }}
+            />
+            <input
+              type='text'
+              placeholder='Busque por pessoas'
+              value={fetchPeople}
+              onChange={(e) => setFetchPeople(e.target.value)}
+              onFocus={() => setSearchWidth(200)}
+              onBlur={handleOfFocus}
+
+              style={{
+                width: searchWidth,
+              }}
+            />
+          </div>
         }
       </section>
       <section className="area-titulo-header">

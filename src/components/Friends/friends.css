@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+.friends .friends-title {
+  background: linear-gradient(60deg, #AA2D77 50%, #F16A29);
+  padding: 6px;
+  border-radius: 5px;
+  margin-bottom: 1em;
+  text-align: center;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.368627451);
+}
+.friends .friends-title h1 {
+  font-size: 2em;
+  color: #FFF;
+}
+.friends .friend {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5em;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.368627451);
+  background: linear-gradient(60deg, #AA2D77 50%, #F16A29);
+  padding: 5px 8px;
+  border-radius: 5px;
+  transition: ease-in-out 0.1s;
+  cursor: pointer;
+}
+.friends .friend:hover {
+  transform: scale(1.02);
+}
+.friends .friend section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.friends .friend section img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1em;
+}
+.friends .friend section p {
+  color: #FFF;
+  font-size: 1.1em;
+}
+.friends .friend button {
+  background-color: rgba(255, 255, 255, 0.3490196078);
+  padding: 4px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.friends .friend button:hover {
+  background-color: #AA2D77;
+  box-shadow: 0 0 4px #FFF;
+}
+
+/*# sourceMappingURL=friends.css.map */

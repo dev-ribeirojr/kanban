@@ -1,0 +1,39 @@
+ -quadro1
+  --id
+  --titulo
+  --data e hora de criação
+  --membros
+    ---pessoa1
+      ----nome
+      ----id
+      ----cargo
+    ---pessoa2
+      ----nome
+      ----id
+      ----cargo
+  --pendente
+    --tasks
+      ---id
+      ---task texto
+      ---data e hora de criação
+      ---status
+      ---comentarios
+        ----membro
+        ----data e hora
+        ----comentario
+      ---prazo
+  --em andamento
+    --tasks
+      ---id
+      ---task texto
+      ---data e hora de criação
+      ---status
+      ---comentarios
+        ----membro
+        ----data e hora
+        ----comentario
+      ---prazo
+      ---iniciado por (membro)
+      ---data que foi iniciado
+
+  

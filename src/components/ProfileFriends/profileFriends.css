@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+.modalFriend {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(18, 18, 18, 0.3882352941);
+  backdrop-filter: blur(1px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modalFriend .modal {
+  background: linear-gradient(60deg, #AA2D77, #F16A29);
+  max-width: 600px;
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  color: #FFF;
+  border-radius: 5px;
+  gap: 1em;
+  position: relative;
+}
+.modalFriend .modal .return {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.3882352941);
+  border-radius: 5px;
+  top: 1em;
+  right: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  transition: ease-in-out 0.5s;
+  width: 50px;
+}
+.modalFriend .modal .return svg {
+  transition: ease-in-out 0.5s;
+}
+.modalFriend .modal .return:hover {
+  background-color: #AA2D77;
+}
+.modalFriend .modal .return:hover svg {
+  transform: translateX(-15px);
+}
+.modalFriend .modal img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.modalFriend .modal .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.modalFriend .modal .info h1 {
+  font-size: 2em;
+  margin-bottom: 0.2em;
+}
+.modalFriend .modal .info .sobre {
+  margin-top: 1em;
+}
+.modalFriend .modal .info button {
+  height: 30px;
+  max-width: 100px;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.3411764706);
+  color: #FFF;
+}
+.modalFriend .modal .info button:hover {
+  background-color: #AA2D77;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.6117647059);
+}
+
+/*# sourceMappingURL=profileFriends.css.map */

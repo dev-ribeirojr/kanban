@@ -26,6 +26,26 @@
   padding: 1em;
   border-radius: 5px;
 }
+.profile .area-profile-border section .return {
+  background-color: #AA2D77;
+  width: 50px;
+  height: 40px;
+  border-radius: 5px;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  transition: ease-in-out 0.5s;
+}
+.profile .area-profile-border section .return svg {
+  transition: ease-in-out 0.5s;
+}
+.profile .area-profile-border section .return:hover {
+  background-color: #F16A29;
+}
+.profile .area-profile-border section .return:hover svg {
+  transform: translateX(-10px);
+}
 .profile .area-profile-border section.area-profile {
   text-align: center;
 }
@@ -120,13 +140,17 @@
   background-color: #F16A29;
   transform: scale(1.1);
 }
+.profile .area-profile-border section.btns-profile {
+  display: flex;
+  justify-content: space-between;
+}
 .profile .area-profile-border section.btns-profile button {
   padding: 8px 16px;
   font-size: 1.2em;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1em;
+  gap: 0.5em;
   border-radius: 5px;
   color: #FFF;
   background-color: #AA2D77;
