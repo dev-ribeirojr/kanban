@@ -10,29 +10,55 @@ import { AuthContext } from '../../contexts/auth';
 import { Link } from 'react-router-dom';
 import { BiSearchAlt } from 'react-icons/bi';
 
+import SearchUsers from '../SearchUsers';
+
 export default function Header({ data }) {
 
   const { user, logOut } = useContext(AuthContext);
   const [modal, setModal] = useState(false);
 
+  const inputRef = useRef();
   const [searchWidth, setSearchWidth] = useState(null);
   const [fetchPeople, setFetchPeople] = useState("");
 
   function fecharModal(e) {
-    const modal = document.querySelector('.modal');
+    const modal = document.querySelector('.modal-header');
     if (e.target === modal) {
       setModal(!modal);
       return;
     }
   }
   function handleOfFocus() {
+    if (fetchPeople.trim() !== "") {
+      return;
+    }
     setSearchWidth(null)
     setFetchPeople('')
   }
 
+  function handleYears(birth) {
+
+    const birthUser = birth.replaceAll("-", '');
+    const data = new Date()
+
+    let ano = data.getFullYear();
+    let mes = data.getMonth();
+    let dia = data.getDate();
+
+    const fullData = `${ano}${mes + 1 < 10 ? `0${mes + 1}` : mes + 1}${dia < 10 ? `0${dia}` : dia}`;
+
+    const birthNum = parseInt(birthUser);
+    const dataNum = parseInt(fullData);
+
+    const yearsNum = dataNum - birthNum
+
+    const years = yearsNum.toString().substring(0, 2);
+    return years
+  }
+
   return (
     <header className='header'>
-      <section>
+      <section className='section-header'>
         {data === "profile" &&
           <Link to={"/home"} className='btn-header'>
             <FaHome />
@@ -48,6 +74,7 @@ export default function Header({ data }) {
             <BiSearchAlt
               color='#FFF'
               size={35}
+              onClick={() => inputRef.current.focus()}
               style={{
                 borderRadius: searchWidth === 200 ? '50%' : null
               }}
@@ -59,7 +86,7 @@ export default function Header({ data }) {
               onChange={(e) => setFetchPeople(e.target.value)}
               onFocus={() => setSearchWidth(200)}
               onBlur={handleOfFocus}
-
+              ref={inputRef}
               style={{
                 width: searchWidth,
               }}
@@ -67,10 +94,10 @@ export default function Header({ data }) {
           </div>
         }
       </section>
-      <section className="area-titulo-header">
+      <section className="area-titulo-header section-header">
         <h1>Gerenciador de Tarefas</h1>
       </section>
-      <section>
+      <section className='section-header'>
         <button className='btn-header btn-icon'>
           <MdNotificationsNone />
         </button>
@@ -101,7 +128,7 @@ export default function Header({ data }) {
       { /* Modal  */}
 
       {modal &&
-        <section className='modal' onClick={fecharModal}>
+        <section className='modal-header' onClick={fecharModal}>
           <section className='modal-perfil'>
             <button
               onClick={() => setModal(!modal)}
@@ -118,7 +145,7 @@ export default function Header({ data }) {
                 )
               }
               <h2>{user.name}</h2>
-              <p>Idade: 22 anos</p>
+              <p>Idade: {handleYears(user.birth)} anos</p>
               <p>Id: <span>{user.uid}</span></p>
             </section>
             {data === 'profile' ?
@@ -128,17 +155,30 @@ export default function Header({ data }) {
               </Link>
               :
               <Link to={"/profile"}>
-                <FaUserCog />
+                <FaUserCog size={25} />
                 Perfil
               </Link>
             }
             <button onClick={() => logOut()}>
-              <MdLogout />
+              <MdLogout size={25} />
               Sair
             </button>
           </section>
         </section>
       }
+      {/* Fim modal */}
+      {/* Modal search users */}
+      {
+        fetchPeople.trim() !== "" &&
+        <SearchUsers
+          value={fetchPeople}
+          setValue={setFetchPeople}
+          handleOfFocus={handleOfFocus}
+          setSearchWidth={setSearchWidth}
+        />
+
+      }
+      {/* Fim modal search users */}
     </header>
   )
 }

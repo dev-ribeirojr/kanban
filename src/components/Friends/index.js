@@ -3,7 +3,8 @@ import './friends.css';
 import { BiUser, BiLoaderCircle, BiArrowBack } from 'react-icons/bi';
 import { AuthContext } from '../../contexts/auth';
 
-import ProfileFriends from '../ProfileFriends';
+import ProfileUSer from '../ProfileUSer';
+import avatar from '../../assets/avatar.png';
 
 export default function Friends() {
 
@@ -24,7 +25,7 @@ export default function Friends() {
   return (
     <section className="friends">
       <section className="friends-title">
-        <h1>AMIGOS</h1>
+        <h1>Amigos</h1>
       </section>
       {loadingFriends ?
         (
@@ -48,7 +49,16 @@ export default function Friends() {
               onClick={() => handleModalFriend(data)}
             >
               <section>
-                <img src={data.profileUrl} alt="Foto de perfil" />
+                {data.profileUrl === null ?
+                  (
+                    <img src={avatar} alt="Foto de perfil" />
+                  )
+                  :
+                  (
+                    <img src={data.profileUrl} alt="Foto de perfil" />
+                  )
+
+                }
                 <p>{data.name}</p>
               </section>
 
@@ -60,8 +70,8 @@ export default function Friends() {
         )
       }
       {modal &&
-        <ProfileFriends
-          selectedFriend={selectedFriend}
+        <ProfileUSer
+          userSelected={selectedFriend}
           handleReturn={handleReturn}
         />
       }

@@ -4,14 +4,14 @@
 
   .friends-title {
     background: linear-gradient(60deg, $cor-primaria 50%, $cor-secundaria);
-    padding: 6px;
+    padding: 10px 0;
     border-radius: 5px;
     margin-bottom: 1em;
     text-align: center;
     box-shadow: 0 0 4px #ffffff5e;
 
     h1 {
-      font-size: 2em;
+      font-size: 1.5em;
       color: $cor-branca;
     }
   }
@@ -68,5 +68,5 @@
     }
   }
 
-  
+
 }

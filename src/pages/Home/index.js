@@ -5,6 +5,8 @@ import RenderPictures from "../../components/RenderPictures";
 import Friends from "../../components/Friends";
 import { BiAddToQueue, BiSearchAlt } from 'react-icons/bi';
 
+import ProfileUSer from "../../components/ProfileUSer";
+
 function Home() {
 
     const inputRef = useRef();
@@ -61,7 +63,6 @@ function Home() {
                     <RenderPictures />
 
                 </section>
-
             </section>
         </section>
     )

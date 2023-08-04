@@ -1,7 +1,7 @@
 import { useState, createContext, useEffect } from 'react';
 import { db, auth } from '../services/firebaseConection';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { setDoc, doc, getDoc } from 'firebase/firestore';
+import { setDoc, doc, getDoc, getDocs, collection, updateDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,8 +16,15 @@ export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // amigos
   const [friends, setFriends] = useState([]);
   const [loadingFriends, setLoadingFriends] = useState(true);
+  const [listUidFriends, setListUidFriends] = useState(user && user?.friends);
+
+  //lista de usuários
+  const [listFullUsers, setListFullUsers] = useState([]);
+  const [loadingFullUsers, setLoadingFullUsers] = useState(true);
+
 
   useEffect(() => {
     async function loadUser() {
@@ -44,12 +51,121 @@ export default function AuthProvider({ children }) {
           handleLoadFriends(friendsRef);
         })
       }
+      setLoadingFriends(false)
     }
     loadFriends()
+
+    setListUidFriends(user?.friends)
+
     return () => { }
   }, [user])
 
-  // reutilizando a busca e renderização de amigos 
+  /*
+    Função que irá buscar todos os usuários para a pesquisa de pessoas
+    OBS: pensando em grande escala essa função ficará sobrecarregando muito.
+    apenas para dar uma boa experiência ao usuário, mas irei buscar por melhorias e evitar isso.
+  */
+  useEffect(() => {
+    async function loadUsersFull() {
+
+      const docRef = collection(db, "users");
+
+      await getDocs(docRef)
+        .then((snapshot) => {
+          let list = []
+          snapshot.forEach((snap) => {
+
+            if (user?.uid === snap.id) {
+              return
+            }
+
+            list.push({
+              uid: snap.id,
+              name: snap.data().name,
+              profileUrl: snap.data().profileUrl,
+              about: snap.data().about,
+              titleProfile: snap.data().titleProfile
+            })
+          })
+          setListFullUsers(list);
+          setLoadingFullUsers(false)
+        })
+        .catch((error) => {
+          console.log(error)
+          setLoadingFullUsers(false)
+        })
+    }
+
+    loadUsersFull()
+    return () => { }
+  }, [user])
+
+  async function handleRemoveUser(uid) {
+    const list = listUidFriends.filter(doc => doc !== uid)
+
+    setListUidFriends(list);
+
+    const docRef = doc(db, "users", user.uid)
+    await updateDoc(docRef, { friends: list })
+      .then(() => {
+
+        const newListFriends = friends.filter(user => user.uid !== uid)
+        setFriends(newListFriends);
+
+        let data = {
+          uid: user.uid,
+          name: user.name,
+          email: user.email,
+          profileUrl: user.profileUrl,
+          birth: user.birth,
+          about: user.about,
+          titleProfile: user.titleProfile,
+          friends: list
+        }
+        storageUser(data)
+
+        toast.success("Sucesso ao remover amigo!")
+      })
+      .catch((error) => {
+        toast.error('error')
+        console.log(error)
+      })
+  }
+
+  // removendo usuário
+  async function handleAddUser(uid) {
+
+    setListUidFriends(list => [...list, uid])
+
+    const docRef = doc(db, "users", user.uid)
+    await updateDoc(docRef, { friends: [...listUidFriends, uid] })
+      .then(() => {
+
+        let data = {
+          uid: user.uid,
+          name: user.name,
+          email: user.email,
+          profileUrl: user.profileUrl,
+          birth: user.birth,
+          about: user.about,
+          titleProfile: user.titleProfile,
+          friends: [...listUidFriends, uid]
+        }
+
+        storageUser(data);
+        toast.success("Sucesso ao adicionar amigo!")
+      })
+      .catch((error) => {
+        toast.error("erro")
+        console.log(error)
+      })
+
+    const friendsRef = doc(db, 'users', uid);
+    handleLoadFriends(friendsRef);
+
+  }
+
+  // reutilizando a busca de amigos 
   async function handleLoadFriends(ref) {
     await getDoc(ref)
 
@@ -197,7 +313,13 @@ export default function AuthProvider({ children }) {
 
         //friends
         loadingFriends,
-        friends
+        friends,
+        handleAddUser,
+        handleRemoveUser,
+
+        //filtro de busca usuários
+        listFullUsers,
+        loadingFullUsers,
       }}
     >
       {children}

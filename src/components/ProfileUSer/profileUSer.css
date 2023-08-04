@@ -32,7 +32,6 @@
   align-items: center;
   justify-content: flex-end;
   transition: ease-in-out 0.5s;
-  width: 50px;
 }
 .modalFriend .modal .return svg {
   transition: ease-in-out 0.5s;
@@ -58,6 +57,10 @@
   font-size: 2em;
   margin-bottom: 0.2em;
 }
+.modalFriend .modal .info section {
+  display: flex;
+  flex-direction: column;
+}
 .modalFriend .modal .info .sobre {
   margin-top: 1em;
 }
@@ -75,4 +78,4 @@
   box-shadow: 0 0 4px rgba(255, 255, 255, 0.6117647059);
 }
 
-/*# sourceMappingURL=profileFriends.css.map */
+/*# sourceMappingURL=profileUSer.css.map */
