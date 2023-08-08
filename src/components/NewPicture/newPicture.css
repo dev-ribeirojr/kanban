@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+.modal-new-picture {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(18, 18, 18, 0.4666666667);
+}
+.modal-new-picture .content-new-picture-color {
+  background: linear-gradient(60deg, #AA2D77, #F16A29);
+  padding: 1em;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.5137254902);
+}
+.modal-new-picture .content-new-picture-color .content-new-picture {
+  background: url("../../assets//fundo.png") no-repeat center center;
+  padding: 1em;
+  border-radius: 5px;
+  width: 100%;
+}
+.modal-new-picture .content-new-picture-color .content-new-picture h1 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+  text-align: center;
+  color: #FFF;
+}
+.modal-new-picture .content-new-picture-color .content-new-picture form {
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+}
+.modal-new-picture .content-new-picture-color .content-new-picture form label {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 1.1em;
+  gap: 0.3em;
+  color: #FFF;
+}
+.modal-new-picture .content-new-picture-color .content-new-picture form label input {
+  font-size: 1em;
+  padding: 8px 10px;
+  border-radius: 5px;
+  margin-left: 0.3em;
+  width: 100%;
+  max-width: 280px;
+}
+.modal-new-picture .content-new-picture-color .content-new-picture form section {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.modal-new-picture .content-new-picture-color .content-new-picture form section button {
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 4px 16px;
+  border-radius: 5px;
+  color: #FFF;
+  background-color: transparent;
+  border: 1px solid #FFF;
+}
+.modal-new-picture .content-new-picture-color .content-new-picture form section button:hover {
+  background-color: #AA2D77;
+}
+
+/*# sourceMappingURL=newPicture.css.map */

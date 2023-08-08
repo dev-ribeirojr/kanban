@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+.header-frame {
+  padding-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: #FFF;
+}
+.header-frame .btn-membros {
+  background-color: transparent;
+  color: #FFF;
+  font-size: 1.2em;
+  border-radius: 5px;
+  border: 1px solid #FFF;
+  padding: 4px 15px;
+}
+.header-frame .btn-membros:hover {
+  border-color: #F16A29;
+  color: #F16A29;
+}
+.header-frame .container-membros {
+  background-color: rgba(0, 0, 0, 0.377);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header-frame .container-membros .content-membros {
+  background: linear-gradient(45deg, #AA2D77, #F16A29);
+  padding: 1em;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.header-frame .container-membros .content-membros .btn-header {
+  display: flex;
+  justify-content: space-between;
+}
+.header-frame .container-membros .content-membros .btn-header button {
+  font-size: 1em;
+  padding: 4px 8px;
+  background-color: transparent;
+  border: 1px solid #FFF;
+  align-self: center;
+  margin-bottom: 0.5em;
+  border-radius: 5px;
+  color: #FFF;
+}
+.header-frame .container-membros .content-membros .btn-header button:hover {
+  background-color: #AA2D77;
+}
+.header-frame .container-membros .content-membros .area-add-members {
+  margin-bottom: 1em;
+  padding: 2px;
+  display: flex;
+  border: 1px solid #FFF;
+  border-radius: 50px;
+  align-items: center;
+}
+.header-frame .container-membros .content-membros .area-add-members svg {
+  background-color: rgba(255, 255, 255, 0.3960784314);
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  padding: 4px;
+}
+.header-frame .container-membros .content-membros .area-add-members input {
+  width: 100%;
+  font-size: 1em;
+  padding: 8px 12px;
+  background-color: transparent;
+  color: #FFF;
+}
+.header-frame .container-membros .content-membros .area-add-members input::placeholder {
+  color: rgba(255, 255, 255, 0.5607843137);
+}
+.header-frame .container-membros .content-membros .filtro-user {
+  position: absolute;
+  top: 100px;
+  left: 1em;
+  right: 1em;
+  backdrop-filter: blur(1px);
+}
+.header-frame .container-membros .content-membros .filtro-user li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.1em;
+  padding: 8px;
+  background-color: #AA2D77;
+  border-radius: 5px;
+  border: 1px solid #FFF;
+}
+.header-frame .container-membros .content-membros .filtro-user li section {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.header-frame .container-membros .content-membros .filtro-user li section img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+.header-frame .container-membros .content-membros .filtro-user li button {
+  padding: 4px 8px;
+  border-radius: 5px;
+  color: #FFF;
+  border: 1px solid #FFF;
+  background-color: transparent;
+}
+.header-frame .container-membros .content-membros .filtro-user li button:hover {
+  background-color: #F16A29;
+}
+.header-frame .container-membros .content-membros .area-membros .list-membros {
+  width: 100%;
+}
+.header-frame .container-membros .content-membros .area-membros .list-membros li {
+  background: rgba(255, 255, 255, 0.3411764706);
+  padding: 0.3em;
+  margin-top: 0.1em;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-frame .container-membros .content-membros .area-membros .list-membros li section {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+.header-frame .container-membros .content-membros .area-membros .list-membros li section p.adm {
+  font-size: 0.8em;
+  border-radius: 5px;
+  padding: 0 0.3em;
+  border: 1px solid rgb(0, 255, 0);
+  color: rgb(0, 255, 0);
+}
+.header-frame .container-membros .content-membros .area-membros .list-membros li section img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+.header-frame .container-membros .content-membros .area-membros .list-membros li button {
+  color: #FFF;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header-frame .container-membros .content-membros .area-membros .list-membros li button.up {
+  background-color: rgb(0, 204, 0);
+}
+.header-frame .container-membros .content-membros .area-membros .list-membros li button.up:hover {
+  background-color: rgb(0, 139, 0);
+}
+.header-frame .container-membros .content-membros .area-membros .list-membros li button.delete {
+  background-color: rgb(255, 68, 68);
+}
+.header-frame .container-membros .content-membros .area-membros .list-membros li button.delete:hover {
+  background-color: rgb(199, 53, 53);
+}
+
+/*# sourceMappingURL=headerFrame.css.map */

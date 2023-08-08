@@ -168,7 +168,6 @@ export default function Profile() {
             <h2>{user.name}</h2>
             <p className='titulo-perfil'>{user.titleProfile ? user.titleProfile : 'Não possui titulo de perfil'}</p>
             <p>Data de Nasc: {handleFormat(user.birth)}</p>
-            <p><strong>ID: </strong>{user.uid}</p>
           </section>
           <section className='sobre'>
             <h3>Sobre</h3>

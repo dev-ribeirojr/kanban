@@ -38,28 +38,36 @@ export default function Header({ data }) {
 
   function handleYears(birth) {
 
-    const birthUser = birth.replaceAll("-", '');
+    const birthUser = new Date(birth)
     const data = new Date()
+
+    let birthYear = birthUser.getFullYear();
+    let birthMonth = birthUser.getMonth();
+    let birthDay = birthUser.getDate();
 
     let ano = data.getFullYear();
     let mes = data.getMonth();
     let dia = data.getDate();
 
-    const fullData = `${ano}${mes + 1 < 10 ? `0${mes + 1}` : mes + 1}${dia < 10 ? `0${dia}` : dia}`;
 
-    const birthNum = parseInt(birthUser);
-    const dataNum = parseInt(fullData);
+    let years = ano - birthYear
 
-    const yearsNum = dataNum - birthNum
+    if (mes < birthMonth || (mes === birthMonth && dia < birthDay)) {
+      years--;
+    }
 
-    const years = yearsNum.toString().substring(0, 2);
-    return years
+    return years.toString().substring(0, 2)
   }
 
   return (
     <header className='header'>
       <section className='section-header'>
         {data === "profile" &&
+          <Link to={"/home"} className='btn-header'>
+            <FaHome />
+          </Link>
+        }
+        {data === "frames" &&
           <Link to={"/home"} className='btn-header'>
             <FaHome />
           </Link>
@@ -146,7 +154,6 @@ export default function Header({ data }) {
               }
               <h2>{user.name}</h2>
               <p>Idade: {handleYears(user.birth)} anos</p>
-              <p>Id: <span>{user.uid}</span></p>
             </section>
             {data === 'profile' ?
               <Link to={"/home"}>

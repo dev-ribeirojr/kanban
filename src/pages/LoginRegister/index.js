@@ -5,7 +5,7 @@ import Logo from '../../assets/logo.png';
 import Img from '../../assets/img.png';
 
 import { MdVisibility, MdVisibilityOff } from 'react-icons/md';
-import { BiLoaderCircle } from 'react-icons/bi'
+import { BiLoaderCircle } from 'react-icons/bi';
 import { toast } from 'react-toastify';
 
 import { AuthContext } from '../../contexts/auth';

@@ -69,9 +69,13 @@
 }
 .profile .area-profile-border section.sobre {
   height: 130px;
+  overflow: auto;
 }
 .profile .area-profile-border section.sobre h3 {
   margin-bottom: 0.5em;
+}
+.profile .area-profile-border section.sobre p {
+  text-align: justify;
 }
 .profile .area-profile-border section form {
   display: flex;

@@ -33,51 +33,53 @@ export default function ProfileUSer({ userSelected, handleReturn }) {
 
   return (
     <section className='modalFriend' onClick={(e) => handleClick(e)}>
-      <section className='modal' >
-        <button className='return' onClick={handleReturn}>
-          <BiArrowBack color='#FFF' size={35} />
-        </button>
+      <section className='modal-border'>
+        <section className='modal' >
+          <button className='return' onClick={handleReturn}>
+            <BiArrowBack color='#FFF' size={35} />
+          </button>
 
-        {
-          userSelected.profileUrl === null ?
-            (
-
-              <img src={avatar} alt='Foto de perfil' />
-            ) :
-            (
-
-              <img src={userSelected.profileUrl} alt='Foto de perfil' />
-            )
-        }
-        <section className='info'>
-          <section>
-            <h1>{userSelected.name}</h1>
-            <p>{
-              userSelected.titleProfile !== "" ?
-                userSelected.titleProfile : "Não possui titulo de perfil"
-            }</p>
-            <p className='sobre'><strong>Sobre</strong></p>
-            <p>{
-              userSelected.about !== '' ?
-                userSelected.about : "Não possui sobre"
-            }</p>
-          </section>
           {
-            handleUser(userSelected.uid) !== -1 ?
+            userSelected.profileUrl === null ?
               (
-                <button
-                  onClick={handleRemove}>
-                  Remover
-                </button>
-              )
-              :
+
+                <img src={avatar} alt='Foto de perfil' />
+              ) :
               (
-                <button
-                  onClick={handleAdd}>
-                  Adicionar
-                </button>
+
+                <img src={userSelected.profileUrl} alt='Foto de perfil' />
               )
           }
+          <section className='info'>
+            <section>
+              <h1>{userSelected.name}</h1>
+              <p>{
+                userSelected.titleProfile !== "" ?
+                  userSelected.titleProfile : "Não possui titulo de perfil"
+              }</p>
+              <p className='sobre'><strong>Sobre</strong></p>
+              <p>{
+                userSelected.about !== '' ?
+                  userSelected.about : "Não possui sobre"
+              }</p>
+            </section>
+            {
+              handleUser(userSelected.uid) !== -1 ?
+                (
+                  <button
+                    onClick={handleRemove}>
+                    Remover
+                  </button>
+                )
+                :
+                (
+                  <button
+                    onClick={handleAdd}>
+                    Adicionar
+                  </button>
+                )
+            }
+          </section>
         </section>
       </section>
     </section>

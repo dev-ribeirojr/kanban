@@ -23,8 +23,7 @@ export default function AuthProvider({ children }) {
 
   //lista de usuários
   const [listFullUsers, setListFullUsers] = useState([]);
-  const [loadingFullUsers, setLoadingFullUsers] = useState(true);
-
+  const [loadingFullUsers, setLoadingFullUsers] = useState(true)
 
   useEffect(() => {
     async function loadUser() {
@@ -37,7 +36,7 @@ export default function AuthProvider({ children }) {
       setLoading(false);
     }
     loadUser();
-
+    return () => { }
   }, [])
 
   // Carregando Amigos do usuário logado
@@ -48,7 +47,7 @@ export default function AuthProvider({ children }) {
       if (user) {
         user.friends.map(async (uid) => {
           const friendsRef = doc(db, 'users', uid);
-          handleLoadFriends(friendsRef);
+          handleLoadFriends(friendsRef, setFriends, setLoadingFriends);
         })
       }
       setLoadingFriends(false)
@@ -100,6 +99,16 @@ export default function AuthProvider({ children }) {
     return () => { }
   }, [user])
 
+  function handleFormat(date) {
+    const data = parseISO(date);
+    const dataFormat = format(data, "dd/MM/yyyy");
+    return dataFormat;
+  }
+
+
+  // gerênciamento de amigos e usuários
+
+  // removendo amigo
   async function handleRemoveUser(uid) {
     const list = listUidFriends.filter(doc => doc !== uid)
 
@@ -132,7 +141,7 @@ export default function AuthProvider({ children }) {
       })
   }
 
-  // removendo usuário
+  // adicionando amigo
   async function handleAddUser(uid) {
 
     setListUidFriends(list => [...list, uid])
@@ -161,12 +170,11 @@ export default function AuthProvider({ children }) {
       })
 
     const friendsRef = doc(db, 'users', uid);
-    handleLoadFriends(friendsRef);
-
+    handleLoadFriends(friendsRef, setFriends, setLoadingFriends);
   }
 
-  // reutilizando a busca de amigos 
-  async function handleLoadFriends(ref) {
+  // busca de amigos 
+  async function handleLoadFriends(ref, setList, loading) {
     await getDoc(ref)
 
       .then((doc) => {
@@ -180,14 +188,16 @@ export default function AuthProvider({ children }) {
           about: doc.data().about,
           birth: doc.data().birth
         })
-        setFriends(friendsList => [...friendsList, ...list])
-        setLoadingFriends(false)
+        setList(friendsList => [...friendsList, ...list])
+        loading(false)
       })
       .catch((error) => {
         console.log(error)
-        setLoadingFriends(false)
+        loading(false)
       })
   }
+
+  // gerenciamento de usuário
 
   // logando usuário
   async function signIn(email, password) {
@@ -292,11 +302,6 @@ export default function AuthProvider({ children }) {
       })
   }
 
-  function handleFormat(date) {
-    const data = parseISO(date);
-    const dataFormat = format(data, "dd/MM/yyyy");
-    return dataFormat;
-  }
 
   return (
     <AuthContext.Provider
@@ -311,6 +316,9 @@ export default function AuthProvider({ children }) {
         loading,
         user,
 
+        //loadUserUid
+        handleLoadFriends,
+
         //friends
         loadingFriends,
         friends,
@@ -320,6 +328,7 @@ export default function AuthProvider({ children }) {
         //filtro de busca usuários
         listFullUsers,
         loadingFullUsers,
+
       }}
     >
       {children}

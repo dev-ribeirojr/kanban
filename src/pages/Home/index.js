@@ -5,13 +5,17 @@ import RenderPictures from "../../components/RenderPictures";
 import Friends from "../../components/Friends";
 import { BiAddToQueue, BiSearchAlt } from 'react-icons/bi';
 
-import ProfileUSer from "../../components/ProfileUSer";
+import NewPicture from "../../components/NewPicture";
+
+import { TbReload } from 'react-icons/tb';
 
 function Home() {
 
     const inputRef = useRef();
     const [searchWidth, setSearchWidth] = useState(null);
     const [searchPictures, setSearchPictures] = useState('');
+
+    const [modalNewPicture, setModalNewPicture] = useState(false)
 
     function handleInpuclose() {
         setSearchWidth(null)
@@ -28,6 +32,11 @@ function Home() {
                 <section className="quadros">
                     <header className="header-home">
                         <button>
+                            <TbReload size={25} color="#FFF" />
+                        </button>
+                        <button
+                            onClick={() => setModalNewPicture(true)}
+                        >
                             <BiAddToQueue color="#FFF" size={25} />
                         </button>
                         <section
@@ -59,8 +68,13 @@ function Home() {
                                 style={{ width: searchWidth }}
                             />
                         </section>
+
                     </header>
-                    <RenderPictures />
+                    <RenderPictures setModalNewPicture={setModalNewPicture} />
+
+                    {modalNewPicture &&
+                        <NewPicture setModalNewPicture={setModalNewPicture} />
+                    }
 
                 </section>
             </section>

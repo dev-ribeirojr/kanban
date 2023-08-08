@@ -11,9 +11,16 @@
   align-items: center;
   justify-content: center;
 }
-.modalFriend .modal {
+.modalFriend .modal-border {
   background: linear-gradient(60deg, #AA2D77, #F16A29);
+  width: 100%;
   max-width: 600px;
+  padding: 0.5em;
+  border-radius: 5px;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.5333333333);
+}
+.modalFriend .modal-border .modal {
+  background: url("../../assets/fundo.png");
   width: 100%;
   padding: 1em;
   display: flex;
@@ -22,7 +29,7 @@
   gap: 1em;
   position: relative;
 }
-.modalFriend .modal .return {
+.modalFriend .modal-border .modal .return {
   position: absolute;
   background-color: rgba(255, 255, 255, 0.3882352941);
   border-radius: 5px;
@@ -33,38 +40,38 @@
   justify-content: flex-end;
   transition: ease-in-out 0.5s;
 }
-.modalFriend .modal .return svg {
+.modalFriend .modal-border .modal .return svg {
   transition: ease-in-out 0.5s;
 }
-.modalFriend .modal .return:hover {
+.modalFriend .modal-border .modal .return:hover {
   background-color: #AA2D77;
 }
-.modalFriend .modal .return:hover svg {
+.modalFriend .modal-border .modal .return:hover svg {
   transform: translateX(-15px);
 }
-.modalFriend .modal img {
+.modalFriend .modal-border .modal img {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
 }
-.modalFriend .modal .info {
+.modalFriend .modal-border .modal .info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.modalFriend .modal .info h1 {
+.modalFriend .modal-border .modal .info h1 {
   font-size: 2em;
   margin-bottom: 0.2em;
 }
-.modalFriend .modal .info section {
+.modalFriend .modal-border .modal .info section {
   display: flex;
   flex-direction: column;
 }
-.modalFriend .modal .info .sobre {
+.modalFriend .modal-border .modal .info .sobre {
   margin-top: 1em;
 }
-.modalFriend .modal .info button {
+.modalFriend .modal-border .modal .info button {
   height: 30px;
   max-width: 100px;
   font-size: 1em;
@@ -73,7 +80,7 @@
   background-color: rgba(255, 255, 255, 0.3411764706);
   color: #FFF;
 }
-.modalFriend .modal .info button:hover {
+.modalFriend .modal-border .modal .info button:hover {
   background-color: #AA2D77;
   box-shadow: 0 0 4px rgba(255, 255, 255, 0.6117647059);
 }
