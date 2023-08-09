@@ -120,8 +120,6 @@ export default function Frame() {
       })
   }
 
-  console.log(tasks)
-
   return (
     <>
       <Header data="frames" />

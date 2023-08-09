@@ -23,7 +23,10 @@ export default function AuthProvider({ children }) {
 
   //lista de usuários
   const [listFullUsers, setListFullUsers] = useState([]);
-  const [loadingFullUsers, setLoadingFullUsers] = useState(true)
+  const [loadingFullUsers, setLoadingFullUsers] = useState(true);
+
+  //useState que controla o input add amigos no header
+  const [searchWidth, setSearchWidth] = useState(null);
 
   useEffect(() => {
     async function loadUser() {
@@ -105,6 +108,13 @@ export default function AuthProvider({ children }) {
     return dataFormat;
   }
 
+  /**
+   *  mostrando o input caso usuário não tenha amigo em sua lista e clique no botão para adicionar
+   *  *@author Pablo abrir busca de amigos no header */
+
+  function handleWidthSearchUser() {
+    setSearchWidth(200)
+  }
 
   // gerênciamento de amigos e usuários
 
@@ -338,6 +348,11 @@ export default function AuthProvider({ children }) {
         //filtro de busca usuários
         listFullUsers,
         loadingFullUsers,
+
+        //abrindo busca de usuários
+        handleWidthSearchUser,
+        setSearchWidth,
+        searchWidth,
 
       }}
     >

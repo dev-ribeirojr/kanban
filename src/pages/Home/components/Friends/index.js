@@ -15,7 +15,7 @@ import ProfileUSer from '../../../../components/ProfileUSer';
 
 export const Friends = memo(() => {
 
-  const { friends, loadingFriends } = useContext(AuthContext);
+  const { friends, loadingFriends, setSearchWidth } = useContext(AuthContext);
   const [modal, setModal] = useState(false);
   const [selectedFriend, setSelectedFriend] = useState([]);
 
@@ -51,10 +51,19 @@ export const Friends = memo(() => {
         (
           friends.length === 0 ?
 
-            <section className='friend'>
-              <section>
-                <p>Não possuí amigos</p>
-              </section>
+            <section
+              className='no-friend'
+              style={{
+                justifyContent: 'center'
+              }}
+            >
+              <p style={{ color: "#FFF" }}>Não possuí amigos</p>
+              <button
+                onClick={() => setSearchWidth(200)}
+              >
+                Adicionar
+              </button>
+
             </section>
             :
             friends.map((data) => (

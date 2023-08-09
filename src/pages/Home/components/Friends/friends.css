@@ -11,6 +11,31 @@
   font-size: 1.5em;
   color: #FFF;
 }
+.friends .no-friend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  margin-bottom: 0.5em;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.368627451);
+  background: linear-gradient(60deg, #AA2D77 50%, #F16A29);
+  padding: 5px 8px;
+  border-radius: 5px;
+}
+.friends .no-friend button {
+  background-color: transparent;
+  padding: 2px 8px;
+  border-radius: 5px;
+  color: #FFF;
+  border: 1px solid #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.friends .no-friend button:hover {
+  background-color: #AA2D77;
+  box-shadow: 0 0 4px #FFF;
+}
 .friends .friend {
   display: flex;
   justify-content: space-between;

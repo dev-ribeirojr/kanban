@@ -19,11 +19,10 @@ import Search from '../Search';
 
 export const Header = memo(({ data }) => {
 
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, searchWidth, setSearchWidth } = useContext(AuthContext);
   const [modal, setModal] = useState(false);
 
   const inputRef = useRef();
-  const [searchWidth, setSearchWidth] = useState(null);
   const [fetchPeople, setFetchPeople] = useState("");
 
   function fecharModal(e) {

@@ -41,7 +41,7 @@ export default function NewPicture({ setModalNewPicture }) {
         created: new Date(),
         createdDayFormat: format(new Date(), "dd/MM/yyyy"),
         createdHoursFormat: format(new Date(), "HH:mm"),
-        createdUser: user.name,
+        createdUser: { name: user.name, uid: user.uid },
         pictures: [
           {
             id: 1,

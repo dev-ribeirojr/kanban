@@ -126,7 +126,7 @@ export const RenderPictures = memo(({ setModalNewPicture }) => {
 
               <p>Membros: {doc.members.length}</p>
               <p>Criada em: {doc.createdDayFormat} as {doc.createdHoursFormat} </p>
-              <p>Criado por: {doc.createdUser}</p>
+              <p>Criado por: {doc.createdUser.name}</p>
 
             </section>
 
