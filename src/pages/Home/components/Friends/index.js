@@ -29,8 +29,6 @@ export const Friends = memo(() => {
     setSelectedFriend([]);
   }
 
-  console.log("renderizou Friends")
-
   return (
     <section className="friends">
       <section className="friends-title">

@@ -5,6 +5,7 @@ import { collection, addDoc } from 'firebase/firestore';
 import { format } from "date-fns";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useForm } from 'react-hook-form';
 
 //context
 import { AuthContext } from "../../../../contexts/auth";
@@ -15,32 +16,26 @@ import { db } from "../../../../services/firebaseConection";
 export default function NewPicture({ setModalNewPicture }) {
 
   const { user } = useContext(AuthContext);
-
+  const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
 
-  const [title, setTitle] = useState("");
-
-  function handleClose(e) {
-    e.preventDefault()
-    setModalNewPicture(false);
-    setTitle("");
-  }
-
+  // função observa se o usuário clicou fora do modal
   function handleClick(e) {
     const container = document.querySelector(".modal-new-picture");
-
     if (e.target === container) {
       setModalNewPicture(false);
-      setTitle("");
     }
   }
+  /** 
+   * Utilizando react hook form para evitar renderizações desnecessárias
+   * *@author Pablo Melhorando a performance 
+  */
+  async function handleNewFrame(data) {
 
-  async function handleNewFrame(e) {
-    e.preventDefault();
-    if (title !== "") {
+    if (data.title !== "") {
 
       await addDoc(collection(db, "pictures"), {
-        title: title,
+        title: data.title,
         adms: [user.uid],
         members: [user.uid],
         created: new Date(),
@@ -71,19 +66,14 @@ export default function NewPicture({ setModalNewPicture }) {
         ]
       })
         .then((doc) => {
-
-          setTitle("");
+          navigate(`/frame/${doc.id}`);
           toast.success("Quadro criado com sucesso!");
           setModalNewPicture(false);
-
-          navigate(`/frame/${doc.id}`);
         })
         .catch((error) => {
           console.log(error)
-          toast.error('Não foi possível criar um novo quadro!')
-
+          toast.error('Não foi possível criar um novo quadro!');
         })
-
     } else {
       toast.error("Titulo está vazio")
     }
@@ -94,19 +84,25 @@ export default function NewPicture({ setModalNewPicture }) {
       <section className="content-new-picture-color">
         <section className="content-new-picture">
           <h1>Novo Quadro </h1>
-          <form onSubmit={(e) => handleNewFrame(e)} >
+          <form onSubmit={handleSubmit(handleNewFrame)} >
             <label>
               Titulo:
               <input
                 type="text"
                 placeholder="Dê um nome ao seu quadro"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                {...register("title")}
               />
             </label>
             <section>
-              <button type="button" onClick={(e) => handleClose(e)}>Cancelar</button>
-              <button type="submit">Criar</button>
+              <button
+                type="button"
+                onClick={() => setModalNewPicture(false)}
+              >
+                Cancelar
+              </button>
+              <button type="submit">
+                Criar
+              </button>
             </section>
           </form>
         </section>

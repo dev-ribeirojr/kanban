@@ -4,7 +4,7 @@ import './home.css';
 // components home
 import { Friends } from "./components/Friends";
 import NewPicture from "./components/NewPicture";
-import RenderPictures from "./components/RenderPictures";
+import { RenderPictures } from "./components/RenderPictures";
 
 //icons
 import { BiAddToQueue, BiSearchAlt } from 'react-icons/bi';
@@ -19,13 +19,12 @@ function Home() {
     const [searchWidth, setSearchWidth] = useState(null);
     const [searchPictures, setSearchPictures] = useState('');
 
-    const [modalNewPicture, setModalNewPicture] = useState(false)
+    const [modalNewPicture, setModalNewPicture] = useState(false);
 
     function handleInpuclose() {
         setSearchWidth(null)
         setSearchPictures('');
     }
-
     return (
         <section className='container'>
             <Header data="home" />

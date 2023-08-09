@@ -1,23 +1,34 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect, memo } from 'react';
 import './renderPictures.css';
 
-import { FaArrowRight } from 'react-icons/fa';
-import { BiLoaderCircle } from 'react-icons/bi';
-import { AuthContext } from '../../../../contexts/auth';
-
+import { collection, getDocs } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
 
-import { collection, getDocs } from 'firebase/firestore';
+//contex
+import { AuthContext } from '../../../../contexts/auth';
+
+//firebase conection
 import { db } from '../../../../services/firebaseConection';
 
-export default function RenderPictures({ setModalNewPicture }) {
+//icons
+import { BiLoaderCircle } from 'react-icons/bi';
+import { FaArrowRight } from 'react-icons/fa';
+
+/** 
+ *memorização do componente para evitar renderização desnecessárias,
+ *@author Pablo memorizando componente */
+export const RenderPictures = memo(({ setModalNewPicture }) => {
 
   const { user } = useContext(AuthContext);
 
   const [listFrames, setListFrames] = useState([]);
   const [loadingPictures, setLoadingPictures] = useState(true);
-  const [userr, setUserr] = useState(user !== null ? true : false);
-
+  /**
+   *@author Pablo removendo dependencia do useEffect
+    anterior
+    const [userr, setUserr] = useState(user !== null ? true : false);
+    user context
+  */
   useEffect(() => {
 
     if (user !== null) {
@@ -56,21 +67,22 @@ export default function RenderPictures({ setModalNewPicture }) {
     }
 
     return () => { }
-  }, [userr])
+  }, [])
 
   return (
     <section className='container-pictures'>
 
       {loadingPictures &&
         <section className='card-picture'>
-          <section className='info' style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-
+          <section
+            className='info'
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
             <BiLoaderCircle size={25} color='#FFF' className='loading' />
-
           </section>
 
           <button className='area-btn-entrar' >
@@ -82,15 +94,15 @@ export default function RenderPictures({ setModalNewPicture }) {
         <section
           className='card-picture'
         >
-          <section className='info' style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            textAlign: 'center'
-          }}>
-
+          <section className='info'
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              textAlign: 'center'
+            }}
+          >
             <p>Você não está participando de nenhum quadro</p>
-
           </section>
 
           <button
@@ -129,4 +141,4 @@ export default function RenderPictures({ setModalNewPicture }) {
       }
     </section>
   )
-}
+})

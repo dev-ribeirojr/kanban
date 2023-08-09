@@ -16,7 +16,6 @@ export default function LoginRegister() {
   const { signUp, signIn, loading } = useContext(AuthContext);
   const { register, handleSubmit, reset } = useForm()
 
-
   const [visible, setVisible] = useState({
     register: false,
     password: false,
