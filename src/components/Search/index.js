@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import './searchUsers.css'
+import './search.css'
 
 import { AuthContext } from "../../contexts/auth";
 import { BiLoaderCircle } from 'react-icons/bi';
@@ -7,7 +7,7 @@ import { BiLoaderCircle } from 'react-icons/bi';
 import ProfileUser from "../ProfileUSer";
 import avatar from '../../assets/avatar.png';
 
-export default function SearchUsers({ value, setValue, setSearchWidth }) {
+export default function Search({ value, setValue, setSearchWidth }) {
 
   const { listFullUsers, loadingFullUsers } = useContext(AuthContext);
   const [userSelected, setUserSelected] = useState([]);

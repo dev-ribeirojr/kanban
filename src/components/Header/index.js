@@ -1,18 +1,23 @@
-import { useContext, useState, useRef } from 'react';
 import './header.css';
+import { useContext, useState, useRef, memo } from 'react';
+import { Link } from 'react-router-dom';
+
+//context
+import { AuthContext } from '../../contexts/auth';
+
+//imgs
 import avatar from '../../assets/avatar.png';
 
-import { MdNotificationsNone, MdLogout } from 'react-icons/md';
-import { FiSettings } from 'react-icons/fi';
-import { FaHome, FaUserCog } from 'react-icons/fa'
-
-import { AuthContext } from '../../contexts/auth';
-import { Link } from 'react-router-dom';
+//icons
 import { BiSearchAlt } from 'react-icons/bi';
+import { FaHome, FaUserCog } from 'react-icons/fa';
+import { FiSettings } from 'react-icons/fi';
+import { MdNotificationsNone, MdLogout } from 'react-icons/md';
 
-import SearchUsers from '../SearchUsers';
+//components
+import Search from '../Search';
 
-export default function Header({ data }) {
+export const Header = memo(({ data }) => {
 
   const { user, logOut } = useContext(AuthContext);
   const [modal, setModal] = useState(false);
@@ -28,6 +33,7 @@ export default function Header({ data }) {
       return;
     }
   }
+  // busca de usuários
   function handleOfFocus() {
     if (fetchPeople.trim() !== "") {
       return;
@@ -35,7 +41,7 @@ export default function Header({ data }) {
     setSearchWidth(null)
     setFetchPeople('')
   }
-
+  // calculo de idade do usuário
   function handleYears(birth) {
 
     const birthUser = new Date(birth)
@@ -45,20 +51,19 @@ export default function Header({ data }) {
     let birthMonth = birthUser.getMonth();
     let birthDay = birthUser.getDate();
 
-    let ano = data.getFullYear();
-    let mes = data.getMonth();
-    let dia = data.getDate();
+    let year = data.getFullYear();
+    let month = data.getMonth();
+    let day = data.getDate();
 
+    let years = year - birthYear
 
-    let years = ano - birthYear
-
-    if (mes < birthMonth || (mes === birthMonth && dia < birthDay)) {
+    if (month < birthMonth || (month === birthMonth && day < birthDay)) {
       years--;
     }
 
     return years.toString().substring(0, 2)
   }
-
+  console.log("Renderizou Header")
   return (
     <header className='header'>
       <section className='section-header'>
@@ -174,18 +179,18 @@ export default function Header({ data }) {
         </section>
       }
       {/* Fim modal */}
+
       {/* Modal search users */}
       {
         fetchPeople.trim() !== "" &&
-        <SearchUsers
+        <Search
           value={fetchPeople}
           setValue={setFetchPeople}
           handleOfFocus={handleOfFocus}
           setSearchWidth={setSearchWidth}
         />
-
       }
       {/* Fim modal search users */}
     </header>
   )
-}
+})

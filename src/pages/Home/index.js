@@ -1,12 +1,12 @@
 import { useRef, useState } from "react";
 import './home.css';
-import Header from "../../components/Header";
-import RenderPictures from "../../components/RenderPictures";
 import Friends from "../../components/Friends";
-import { BiAddToQueue, BiSearchAlt } from 'react-icons/bi';
-
 import NewPicture from "../../components/NewPicture";
+import RenderPictures from "../../components/RenderPictures";
 
+
+import { BiAddToQueue, BiSearchAlt } from 'react-icons/bi';
+import { Header } from "../../components/Header";
 import { TbReload } from 'react-icons/tb';
 
 function Home() {

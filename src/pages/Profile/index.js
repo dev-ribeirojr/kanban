@@ -4,7 +4,7 @@ import './profile.css';
 import { AuthContext } from '../../contexts/auth';
 import avatar from '../../assets/avatar.png';
 
-import Header from '../../components/Header';
+import { Header } from '../../components/Header';
 import { FiUpload } from 'react-icons/fi';
 
 import { BiLoaderCircle, BiEdit, BiArrowBack } from 'react-icons/bi';

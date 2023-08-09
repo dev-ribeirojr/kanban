@@ -1,18 +1,26 @@
-import { useState, useEffect, useContext } from "react";
 import './frame.css';
+import { useState, useEffect, useContext } from "react";
 
-import Header from "../../components/Header";
-import HeaderFrame from "../../components/HeaderFrame";
-
-import { AuthContext } from "../../contexts/auth";
-import { BiAddToQueue } from 'react-icons/bi';
-import { db } from "../../services/firebaseConection";
-import { FaComments } from "react-icons/fa";
 import { format } from "date-fns";
 import { onSnapshot, doc, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+
+//context
+import { AuthContext } from "../../contexts/auth";
+
+//components
+import { Header } from "../../components/Header";
+import HeaderFrame from "../../components/HeaderFrame";
+
+//firebase
+import { db } from "../../services/firebaseConection";
+
+//icons
+import { FaComments } from "react-icons/fa";
+import { BiAddToQueue } from 'react-icons/bi';
+
 
 export default function Frame() {
 
