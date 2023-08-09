@@ -1,67 +1,56 @@
 import { useContext, useState } from 'react';
 import './login.css';
 
-import Logo from '../../assets/logo.png';
 import Img from '../../assets/img.png';
-
-import { MdVisibility, MdVisibilityOff } from 'react-icons/md';
-import { BiLoaderCircle } from 'react-icons/bi';
-import { toast } from 'react-toastify';
+import Logo from '../../assets/logo.png';
+import Typing from '../../components/animated';
 
 import { AuthContext } from '../../contexts/auth';
-
-import Typing from '../../components/animated';
+import { BiLoaderCircle } from 'react-icons/bi';
+import { MdVisibility, MdVisibilityOff } from 'react-icons/md';
+import { toast } from 'react-toastify';
+import { useForm } from 'react-hook-form';
 
 export default function LoginRegister() {
 
-  const { signUp, signIn, loading } = useContext(AuthContext)
+  const { signUp, signIn, loading } = useContext(AuthContext);
+  const { register, handleSubmit, reset } = useForm()
+
 
   const [visible, setVisible] = useState({
     register: false,
     password: false,
   });
-  const [user, setUser] = useState({
-    name: '',
-    email: '',
-    password: '',
-    birth: ''
-  })
 
-  function clearInputs() {
-    setUser({ email: '', password: '', name: '', birth: '' })
+  //Limpando os campos dos inputs
+  function handleClearInput() {
+    reset();
   }
 
   function handleRegister() {
-    handleVisible("register", !visible.register)
-    clearInputs();
+    handleVisible("register", !visible.register);
+    handleClearInput();
   }
 
-  async function handleLogin(e) {
-    e.preventDefault();
+  async function handleLogin(data) {
 
     if (visible.register) {
-      if (user.name !== '' && user.birth !== '' && user.email !== '' && user.password) {
-        if (user.password.length < 6) {
+      if (data.name !== '' && data.birth !== '' && data.email !== '' && data.password) {
+        if (data.password.length < 6) {
           toast.info("Senha precisa ter 6 digitos ou mais.");
           return;
         }
-        await signUp(user.name, user.birth, user.email, user.password);
-
+        await signUp(data.name, data.birth, data.email, data.password);
         return;
       }
       toast.error('Preencha os dados corretamente!');
     } else {
-      if (user.email !== '' && user.password) {
-        await signIn(user.email, user.password);
-
+      if (data.email !== '' && data.password) {
+        await signIn(data.email, data.password);
         return;
       }
       toast.error('Preencha os dados corretamente!');
     }
-  }
-
-  function handleChange(prop, e) {
-    setUser({ ...user, [prop]: e.target.value })
   }
 
   function handleVisible(prop, e) {
@@ -77,7 +66,6 @@ export default function LoginRegister() {
           className='area-texto'
         >
           <Typing
-
             text={
               visible.register ?
                 "Que bom ter você por aqui, Crie sua conta!"
@@ -125,7 +113,7 @@ export default function LoginRegister() {
           </section>
 
           <form
-            onSubmit={handleLogin}
+            onSubmit={handleSubmit(handleLogin)}
             data-aos="zoom-in"
             data-aos-duration="1500"
             data-aos-delay="200"
@@ -136,15 +124,13 @@ export default function LoginRegister() {
                 <input
                   type='text'
                   placeholder='Digite seu nome'
-                  value={user.name}
-                  onChange={(e) => handleChange("name", e)}
+                  {...register("name")}
                 />
                 <label>Data de Nascimento</label>
                 <input
                   type='date'
                   placeholder='Digite seu nome'
-                  value={user.birth}
-                  onChange={(e) => handleChange("birth", e)}
+                  {...register("birth")}
                 />
               </>
             }
@@ -152,15 +138,13 @@ export default function LoginRegister() {
             <input
               type='text'
               placeholder='Digite seu email'
-              value={user.email}
-              onChange={(e) => handleChange("email", e)}
+              {...register("email")}
             />
             <label>Senha</label>
             <input
               type={visible.password ? "text" : "password"}
               placeholder='******'
-              value={user.password}
-              onChange={(e) => handleChange("password", e)}
+              {...register("password")}
             />
             <div onClick={() => handleVisible('password', !visible.password)}>
               {visible.password ?
@@ -195,9 +179,10 @@ export default function LoginRegister() {
               data-aos="zoom-in"
               data-aos-duration="1500"
               data-aos-delay="200"
-            >Sou novo por aqui, <span
-              onClick={handleRegister}
             >
+              Sou novo por aqui, <span
+                onClick={handleRegister}
+              >
                 criar uma conta.
               </span>
             </p>

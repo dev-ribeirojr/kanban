@@ -236,6 +236,11 @@ export default function AuthProvider({ children }) {
           setLoading(false);
           return;
         }
+        if (error.code === "auth/invalid-email") {
+          toast.error("Digite um email válido");
+          setLoading(false);
+          return;
+        }
         console.log(error)
         setLoading(false)
       })
@@ -275,6 +280,11 @@ export default function AuthProvider({ children }) {
       .catch((error) => {
         if (error.code === "auth/email-already-in-use") {
           toast.error('Este email já está sendo utilizado!');
+          setLoading(false);
+          return;
+        }
+        if (error.code === "auth/invalid-email") {
+          toast.error("Digite um email válido.");
           setLoading(false);
           return;
         }

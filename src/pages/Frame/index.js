@@ -245,14 +245,6 @@ export default function Frame() {
                                 Concluir
                               </button>
                             }
-                            {doc.title === "Tarefas em andamento" && isAdm &&
-                              <button
-                                className="play"
-                                onClick={() => handleTask(task, 1, 2)}
-                              >
-                                Concluir
-                              </button>
-                            }
                             {doc.title === "Tarefas em análise" && isAdm &&
                               <>
                                 <button
