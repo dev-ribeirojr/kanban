@@ -1,14 +1,17 @@
 import { useState, useContext } from "react";
 import "./newPicture.css";
 
-import { AuthContext } from "../../contexts/auth";
 import { collection, addDoc } from 'firebase/firestore';
-import { db } from "../../services/firebaseConection";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { format } from "date-fns";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
+//context
+import { AuthContext } from "../../../../contexts/auth";
+//firebase
+import { db } from "../../../../services/firebaseConection";
 
+//modal para criar novo quadro
 export default function NewPicture({ setModalNewPicture }) {
 
   const { user } = useContext(AuthContext);

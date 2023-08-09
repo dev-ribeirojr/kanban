@@ -19,7 +19,7 @@
   box-shadow: 0 0 4px rgba(255, 255, 255, 0.5137254902);
 }
 .modal-new-picture .content-new-picture-color .content-new-picture {
-  background: url("../../assets//fundo.png") no-repeat center center;
+  background: url("../../../../assets/fundo.png") no-repeat center center;
   padding: 1em;
   border-radius: 5px;
   width: 100%;

@@ -63,7 +63,6 @@ export const Header = memo(({ data }) => {
 
     return years.toString().substring(0, 2)
   }
-  console.log("Renderizou Header")
   return (
     <header className='header'>
       <section className='section-header'>

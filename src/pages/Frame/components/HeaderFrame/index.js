@@ -1,12 +1,12 @@
 import { useState, useContext, useEffect } from 'react';
 import './headerFrame.css';
 
-import avatar from '../../assets/avatar.png';
+import avatar from '../../../../assets/avatar.png';
 
-import { AuthContext } from '../../contexts/auth';
+import { AuthContext } from '../../../../contexts/auth';
 import { BiSearchAlt, BiLoaderCircle } from 'react-icons/bi';
 
-import { db } from '../../services/firebaseConection';
+import { db } from '../../../../services/firebaseConection';
 import { doc, updateDoc } from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';

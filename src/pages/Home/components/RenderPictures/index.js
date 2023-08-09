@@ -3,12 +3,12 @@ import './renderPictures.css';
 
 import { FaArrowRight } from 'react-icons/fa';
 import { BiLoaderCircle } from 'react-icons/bi';
-import { AuthContext } from '../../contexts/auth';
+import { AuthContext } from '../../../../contexts/auth';
 
 import { Link } from 'react-router-dom';
 
 import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../../services/firebaseConection';
+import { db } from '../../../../services/firebaseConection';
 
 export default function RenderPictures({ setModalNewPicture }) {
 

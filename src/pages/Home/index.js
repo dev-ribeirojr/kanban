@@ -1,13 +1,17 @@
 import { useRef, useState } from "react";
 import './home.css';
-import Friends from "../../components/Friends";
-import NewPicture from "../../components/NewPicture";
-import RenderPictures from "../../components/RenderPictures";
 
+// components home
+import { Friends } from "./components/Friends";
+import NewPicture from "./components/NewPicture";
+import RenderPictures from "./components/RenderPictures";
 
+//icons
 import { BiAddToQueue, BiSearchAlt } from 'react-icons/bi';
-import { Header } from "../../components/Header";
 import { TbReload } from 'react-icons/tb';
+
+//components
+import { Header } from "../../components/Header";
 
 function Home() {
 

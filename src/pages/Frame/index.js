@@ -12,7 +12,7 @@ import { AuthContext } from "../../contexts/auth";
 
 //components
 import { Header } from "../../components/Header";
-import HeaderFrame from "../../components/HeaderFrame";
+import HeaderFrame from "./components/HeaderFrame";
 
 //firebase
 import { db } from "../../services/firebaseConection";
@@ -20,7 +20,6 @@ import { db } from "../../services/firebaseConection";
 //icons
 import { FaComments } from "react-icons/fa";
 import { BiAddToQueue } from 'react-icons/bi';
-
 
 export default function Frame() {
 
@@ -39,7 +38,7 @@ export default function Frame() {
 
       const frameRef = doc(db, "pictures", id);
 
-      const unSub = onSnapshot(frameRef, (docSnapshot) => {
+      const umSub = onSnapshot(frameRef, (docSnapshot) => {
 
         let list = {
           id: docSnapshot.id,
