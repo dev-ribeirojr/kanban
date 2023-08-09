@@ -1,0 +1,51 @@
+.list-membros {
+  width: 100%;
+}
+.list-membros li {
+  background: rgba(255, 255, 255, 0.3411764706);
+  padding: 0.3em;
+  margin-top: 0.1em;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.list-membros li section {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+.list-membros li section p.adm {
+  font-size: 0.8em;
+  border-radius: 5px;
+  padding: 0 0.3em;
+  border: 1px solid rgb(0, 255, 0);
+  color: rgb(0, 255, 0);
+}
+.list-membros li section img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+.list-membros li button {
+  color: #FFF;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.list-membros li button.up {
+  background-color: rgb(0, 204, 0);
+}
+.list-membros li button.up:hover {
+  background-color: rgb(0, 139, 0);
+}
+.list-membros li button.delete {
+  background-color: rgb(255, 68, 68);
+}
+.list-membros li button.delete:hover {
+  background-color: rgb(199, 53, 53);
+}
+
+/*# sourceMappingURL=membersList.css.map */

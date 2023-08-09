@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+.filtro-user {
+  position: absolute;
+  top: 100px;
+  left: 1em;
+  right: 1em;
+  backdrop-filter: blur(1px);
+}
+.filtro-user li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.1em;
+  padding: 8px;
+  background-color: #AA2D77;
+  border-radius: 5px;
+  border: 1px solid #FFF;
+}
+.filtro-user li section {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.filtro-user li section img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+.filtro-user li button {
+  padding: 4px 8px;
+  border-radius: 5px;
+  color: #FFF;
+  border: 1px solid #FFF;
+  background-color: transparent;
+}
+.filtro-user li button:hover {
+  background-color: #F16A29;
+}
+
+/*# sourceMappingURL=searchUser.css.map */

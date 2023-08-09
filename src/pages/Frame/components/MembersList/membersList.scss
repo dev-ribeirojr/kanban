@@ -1,0 +1,63 @@
+.list-membros {
+  width: 100%;
+
+  li {
+    background: #ffffff57;
+    padding: 0.3em;
+    margin-top: 0.1em;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+    section {
+      display: flex;
+      align-items: center;
+      gap: 0.3em;
+
+      p {
+        &.adm {
+          font-size: 0.8em;
+          border-radius: 5px;
+          padding: 0 0.3em;
+          border: 1px solid rgb(0, 255, 0);
+          color: rgb(0, 255, 0);
+        }
+      }
+
+      img {
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+
+    button {
+      color: #FFF;
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 5px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &.up {
+        background-color: rgb(0, 204, 0);
+
+        &:hover {
+          background-color: rgb(0, 139, 0);
+        }
+      }
+
+      &.delete {
+        background-color: rgb(255, 68, 68);
+
+        &:hover {
+          background-color: rgb(199, 53, 53);
+        }
+      }
+    }
+  }
+}

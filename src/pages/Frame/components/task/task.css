@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+.tasks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.tasks .card {
+  background-color: #FFF;
+  padding: 0.5em;
+  border-radius: 5px;
+  margin: 0.3em 0.3em 0 0.3em;
+  height: fit-content;
+}
+.tasks .card p {
+  margin: 0.5em 0;
+  word-break: break-all;
+}
+.tasks .card p.created, .tasks .card p.info-user {
+  margin: 0;
+  font-size: 0.8em;
+  display: flex;
+  justify-content: space-between;
+}
+.tasks .card p.info-user {
+  margin-top: 0.5em;
+}
+.tasks .card .footer {
+  margin-top: 0.5em;
+  display: flex;
+  justify-content: space-between;
+}
+.tasks .card .footer .area-btn {
+  display: flex;
+  gap: 0.5em;
+}
+.tasks .card .footer .area-btn button {
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #FFF;
+}
+.tasks .card .footer .area-btn button.play {
+  background-color: rgb(0, 204, 0);
+}
+.tasks .card .footer .area-btn button.play:hover {
+  background-color: rgb(0, 139, 0);
+}
+.tasks .card .footer .area-btn button.edit {
+  background-color: rgb(255, 176, 29);
+}
+.tasks .card .footer .area-btn button.edit:hover {
+  background-color: rgb(185, 130, 27);
+}
+.tasks .card .footer .area-btn button.delete {
+  background-color: rgb(255, 68, 68);
+}
+.tasks .card .footer .area-btn button.delete:hover {
+  background-color: rgb(199, 53, 53);
+}
+.tasks .card .footer .comment {
+  background-color: transparent;
+}
+.tasks .card .footer .comment svg {
+  color: #AA2D77;
+  transition: ease-in-out 0.3s;
+}
+.tasks .card .footer .comment:hover svg {
+  color: #F16A29;
+  transform: scale(1.1);
+}
+
+/*# sourceMappingURL=task.css.map */

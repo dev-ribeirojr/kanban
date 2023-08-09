@@ -1,0 +1,44 @@
+@import "../../../../sass/variaveis.scss";
+
+.filtro-user {
+  position: absolute;
+  top: 100px;
+  left: 1em;
+  right: 1em;
+  backdrop-filter: blur(1px);
+
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.1em;
+    padding: 8px;
+    background-color: $cor-primaria;
+    border-radius: 5px;
+    border: 1px solid #FFF;
+
+    section {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+
+      img {
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+
+    button {
+      padding: 4px 8px;
+      border-radius: 5px;
+      color: #FFF;
+      border: 1px solid #FFF;
+      background-color: transparent;
+
+      &:hover {
+        background-color: $cor-secundaria;
+      }
+    }
+  }
+}
