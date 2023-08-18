@@ -1,0 +1,13 @@
+.not-found {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+}
+.not-found h1 {
+  font-size: 4em;
+}
+
+/*# sourceMappingURL=notFound.css.map */

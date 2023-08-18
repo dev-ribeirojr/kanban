@@ -38,6 +38,24 @@ export default function MembersList({ isAdm, handleAdmMember, listMembers, loadi
     }
   }
 
+  async function handleUpAdm(uid) {
+    const adms = frame.adms
+    adms.push(uid)
+
+    const docRef = doc(db, "pictures", id)
+
+    await updateDoc(docRef, {
+      adms: adms
+    })
+      .then(() => {
+        toast.success("Membro promovido!!")
+      })
+      .catch((error) => {
+        console.log(error)
+        toast.error("Erro ao promover membro")
+      })
+  }
+
   return (
     <ul className='list-membros'>
       {loadingMembers &&
@@ -73,7 +91,7 @@ export default function MembersList({ isAdm, handleAdmMember, listMembers, loadi
             </section>
             {isAdm && !handleAdmMember(doc.uid) &&
               <section>
-                <button className='up'>
+                <button className='up' onClick={() => handleUpAdm(doc.uid)}>
                   Promover
                 </button>
                 <button
