@@ -6,7 +6,7 @@
   justify-content: space-around;
   color: #FFF;
 }
-.header-frame .btn-membros {
+.header-frame .btn-header-frame {
   background-color: transparent;
   color: #FFF;
   font-size: 1.2em;
@@ -14,7 +14,7 @@
   border: 1px solid #FFF;
   padding: 4px 15px;
 }
-.header-frame .btn-membros:hover {
+.header-frame .btn-header-frame:hover {
   border-color: #F16A29;
   color: #F16A29;
 }

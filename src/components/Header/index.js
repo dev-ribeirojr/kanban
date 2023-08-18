@@ -109,12 +109,14 @@ export const Header = memo(({ data }) => {
         <h1>Gerenciador de Tarefas</h1>
       </section>
       <section className='section-header'>
-        <button className='btn-header btn-icon'>
+        {/* <button className='btn-header btn-icon'>
           <MdNotificationsNone />
         </button>
-        <button className='btn-header btn-icon'>
+        <button
+          className='btn-header btn-icon'
+        >
           <FiSettings />
-        </button>
+        </button> */}
         {user.profileUrl === null ?
           (
             <img

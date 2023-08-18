@@ -137,7 +137,7 @@ export default function Task({ doc, handleUpdate, tasks, user, isAdm }) {
                 }
                 {isAdm && doc.title !== "Tarefas em análise" && doc.title !== "Tarefas aprovada" &&
                   <>
-                    <button className="edit">Editar</button>
+                    {/* <button className="edit">Editar</button> */}
                     <button
                       className="delete"
                       onClick={() => handleDelete(task, doc.title)}
@@ -147,9 +147,9 @@ export default function Task({ doc, handleUpdate, tasks, user, isAdm }) {
                   </>
                 }
               </section>
-              <button className="comment">
+              {/* <button className="comment">
                 <FaComments size={20} />
-              </button>
+              </button> */}
             </section>
           </section>
         ))

@@ -11,6 +11,7 @@ export default function RoutesApp() {
   return (
     <Routes>
       <Route path='/' element={<LoginRegister />} />
+
       <Route path='/home' element={<Private> <Home /> </Private>} />
       <Route path='/profile' element={<Private> <Profile /> </Private>} />
       <Route path='/frame/:id' element={<Private> <Frame /> </Private>} />

@@ -1,19 +1,24 @@
 import { useState, useContext, useEffect } from 'react';
 import './headerFrame.css';
 
+import { doc, deleteDoc } from 'firebase/firestore';
+import { useNavigate, useParams } from 'react-router-dom';
+
 import { AuthContext } from '../../../../contexts/auth';
+
 import { BiSearchAlt } from 'react-icons/bi';
-
+//firebase
 import { db } from '../../../../services/firebaseConection';
-import { doc } from 'firebase/firestore';
 
+//components
 import MembersList from '../MembersList';
 import SearchUser from '../SearchUser';
 
-export default function HeaderFrame({ frame, loading, isAdm }) {
-
-
+export default function HeaderFrame({ frame, loading, isAdm, userUid }) {
   const { handleLoadFriends, listFullUsers, loadingFullUsers } = useContext(AuthContext);
+  const { id } = useParams();
+
+  const navigate = useNavigate();
 
   const [listMembers, setListMembers] = useState([]);
   const [loadingMembers, setLoadingMembers] = useState(true);
@@ -22,11 +27,13 @@ export default function HeaderFrame({ frame, loading, isAdm }) {
   const [addMembers, setAddMembers] = useState(false);
   const [inputText, setInputText] = useState("");
 
+  const isCreator = userUid === frame?.createdUser?.uid
+
   useEffect(() => {
     async function loadMembers() {
       if (!loading) {
         setListMembers([])
-        frame.members.map(async (uid) => {
+        frame.members?.map(async (uid) => {
           const membersRef = doc(db, "users", uid);
           handleLoadFriends(membersRef, setListMembers, setLoadingMembers);
         })
@@ -38,7 +45,7 @@ export default function HeaderFrame({ frame, loading, isAdm }) {
   }, [loading, frame])
 
   function handleAdmMember(uid) {
-    const exist = frame.adms.findIndex((adms) => adms === uid);
+    const exist = frame?.adms.findIndex((adms) => adms === uid);
     if (exist !== -1) {
       return true
     } else {
@@ -61,19 +68,50 @@ export default function HeaderFrame({ frame, loading, isAdm }) {
     setInputText("");
   }
 
+  async function handleRemoveFrame() {
+    const docRef = doc(db, "pictures", id)
+    await deleteDoc(docRef)
+      .then(() => {
+        navigate("/home")
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
   if (loading) {
     return <section></section>
   }
 
   return (
     <header className="header-frame">
+
+      {
+        /**
+         * @author Pablo saindo do quandro navegando de volta para a home
+         */
+      }
+      <button
+        className='btn-header-frame'
+        onClick={() => navigate("/home")}
+      >
+        Sair
+      </button>
       <h1>{frame.title}</h1>
       <button
-        className='btn-membros'
+        className='btn-header-frame'
         onClick={() => setModalMembers(true)}
       >
         Membros
       </button>
+      {isCreator &&
+        <button
+          className='btn-header-frame'
+          onClick={handleRemoveFrame}
+        >
+          Excluir Quadro
+        </button>
+      }
 
       {modalMembers &&
         <section className='container-membros' onClick={(e) => handleCloseModal(e)}>

@@ -261,6 +261,8 @@ export default function AuthProvider({ children }) {
     setLoading(true)
     await createUserWithEmailAndPassword(auth, email, password)
       .then(async (value) => {
+        console.log(value)
+
         let uidUser = value.user.uid
         await setDoc(doc(db, "users", uidUser), {
           name: name,
@@ -289,6 +291,7 @@ export default function AuthProvider({ children }) {
       })
       .catch((error) => {
         if (error.code === "auth/email-already-in-use") {
+          console.log(error.code)
           toast.error('Este email já está sendo utilizado!');
           setLoading(false);
           return;

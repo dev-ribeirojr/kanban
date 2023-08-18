@@ -53,6 +53,9 @@ export default function LoginRegister() {
   }
 
   function handleVisible(prop, e) {
+    if (prop === "register" && e === false) {
+      reset();
+    }
     setVisible({ ...visible, [prop]: e })
   }
 

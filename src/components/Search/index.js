@@ -71,7 +71,6 @@ export default function Search({ value, setValue, setSearchWidth }) {
                 <p>{user.name}</p>
               </section>
             ))
-
           }
           {value.trim() !== "" && filterUsers.length === 0 &&
             <section
@@ -85,7 +84,6 @@ export default function Search({ value, setValue, setSearchWidth }) {
             >
               <p>Usuário não encontrado</p>
             </section>
-
           }
         </section>
       </section>

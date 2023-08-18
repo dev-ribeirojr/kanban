@@ -34,15 +34,15 @@ function Home() {
                 </aside>
                 <section className="quadros">
                     <header className="header-home">
-                        <button>
+                        {/* <button>
                             <TbReload size={25} color="#FFF" />
-                        </button>
+                        </button> */}
                         <button
                             onClick={() => setModalNewPicture(true)}
                         >
                             <BiAddToQueue color="#FFF" size={25} />
                         </button>
-                        <section
+                        {/* <section
                             className="search"
                             style={{
                                 border: searchWidth === 200 ? "1px solid #F16A29" : null,
@@ -70,7 +70,7 @@ function Home() {
                                 onBlur={handleInpuclose}
                                 style={{ width: searchWidth }}
                             />
-                        </section>
+                        </section> */}
 
                     </header>
                     <RenderPictures setModalNewPicture={setModalNewPicture} />

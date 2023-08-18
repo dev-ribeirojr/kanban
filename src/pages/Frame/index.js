@@ -33,6 +33,8 @@ export default function Frame() {
   const [loadingFrame, setLoadingFrame] = useState(true);
   const [isAdm, setIsAdm] = useState(false);
 
+  const [creator, setCreator] = useState(false)
+
   useEffect(() => {
     async function handleFrames() {
 
@@ -42,13 +44,14 @@ export default function Frame() {
 
         let list = {
           id: docSnapshot.id,
-          adms: docSnapshot.data().adms,
-          created: docSnapshot.data().created,
-          members: docSnapshot.data().members,
-          pictures: docSnapshot.data().pictures,
-          title: docSnapshot.data().title,
+          adms: docSnapshot.data()?.adms,
+          created: docSnapshot.data()?.created,
+          members: docSnapshot.data()?.members,
+          pictures: docSnapshot.data()?.pictures,
+          title: docSnapshot.data()?.title,
+          createdUser: docSnapshot.data()?.createdUser
         }
-        setTasks(docSnapshot.data().pictures);
+        setTasks(docSnapshot.data()?.pictures);
 
         setFrame(list);
         setLoadingFrame(false);
@@ -75,12 +78,14 @@ export default function Frame() {
     return () => { }
   }, [loadingFrame]);
 
+  console.log(frame?.createdUser?.uid)
+
   /** 
    * Melhorando a performance do página evitando renderizações desnecessárias
    *@author Pablo utilizando react-hook-form*/
 
   async function handleAddTask(data) {
-    if (data.task !== "") {
+    if (data?.task !== "") {
 
       let newTask = {
         id: uuidv4(),
@@ -123,11 +128,11 @@ export default function Frame() {
   return (
     <>
       <Header data="frames" />
-      <HeaderFrame frame={frame} loading={loadingFrame} isAdm={isAdm} />
+      <HeaderFrame frame={frame} loading={loadingFrame} isAdm={isAdm} userUid={user.uid} />
       <section className="container-frames">
         <section className="frames">
           {!loadingFrame &&
-            tasks.map((doc) =>
+            tasks?.map((doc) =>
               <section
                 className="pictures"
                 key={doc.id}
