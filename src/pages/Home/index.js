@@ -15,34 +15,34 @@ import { Header } from "../../components/Header";
 
 function Home() {
 
-    const inputRef = useRef();
-    const [searchWidth, setSearchWidth] = useState(null);
-    const [searchPictures, setSearchPictures] = useState('');
+  const inputRef = useRef();
+  const [searchWidth, setSearchWidth] = useState(null);
+  const [searchPictures, setSearchPictures] = useState('');
 
-    const [modalNewPicture, setModalNewPicture] = useState(false);
+  const [modalNewPicture, setModalNewPicture] = useState(false);
 
-    function handleInpuclose() {
-        setSearchWidth(null)
-        setSearchPictures('');
-    }
-    return (
-        <section className='container'>
-            <Header data="home" />
-            <section className="main-home">
-                <aside className="area-amigos">
-                    <Friends />
-                </aside>
-                <section className="quadros">
-                    <header className="header-home">
-                        {/* <button>
+  function handleInpuclose() {
+    setSearchWidth(null)
+    setSearchPictures('');
+  }
+  return (
+    <section className='container'>
+      <Header data="home" />
+      <section className="main-home">
+        <aside className="area-amigos">
+          <Friends />
+        </aside>
+        <section className="quadros">
+          <header className="header-home">
+            {/* <button>
                             <TbReload size={25} color="#FFF" />
                         </button> */}
-                        <button
-                            onClick={() => setModalNewPicture(true)}
-                        >
-                            <BiAddToQueue color="#FFF" size={25} />
-                        </button>
-                        {/* <section
+            <button
+              onClick={() => setModalNewPicture(true)}
+            >
+              <BiAddToQueue color="#FFF" size={25} />
+            </button>
+            {/* <section
                             className="search"
                             style={{
                                 border: searchWidth === 200 ? "1px solid #F16A29" : null,
@@ -72,17 +72,17 @@ function Home() {
                             />
                         </section> */}
 
-                    </header>
-                    <RenderPictures setModalNewPicture={setModalNewPicture} />
+          </header>
+          <RenderPictures setModalNewPicture={setModalNewPicture} />
 
-                    {modalNewPicture &&
-                        <NewPicture setModalNewPicture={setModalNewPicture} />
-                    }
+          {modalNewPicture &&
+            <NewPicture setModalNewPicture={setModalNewPicture} />
+          }
 
-                </section>
-            </section>
         </section>
-    )
+      </section>
+    </section>
+  )
 }
 
 export default Home;
