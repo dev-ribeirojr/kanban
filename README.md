@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# 🕮 Projeto Kanban
+<p> <img src="https://komarev.com/ghpvc/?username=dev-ribeirojr&color=blue" alt="Profile Views" /> </p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🛠️ Construído com
+![JavaScript](https://img.shields.io/badge/-JavaScript-05122A?style=flar&logo=javascript)&nbsp;
+![HTML](https://img.shields.io/badge/-HTML-05122A?style=flar&logo=HTML5)&nbsp;
+![CSS](https://img.shields.io/badge/-CSS-05122A?style=flar&logo=CSS3&logoColor=1572b6)&nbsp;
+![ReactJS](https://img.shields.io/badge/-ReactJS-05122A?style=flar&logo=react)&nbsp;
 
-## Available Scripts
+<a href="https://kanban-ribeirojr.netlify.app/" target="_blank">🔗 Acesse o Projeto Aqui</a>
 
-In the project directory, you can run:
+## 📌 Sobre o Projeto
+Esse projeto e uma espécie de quadro kanban, que contem quatro etapas, começando do quadro em que se encontra as atividades a serem feitas e que termina no quandro de atividades concluídas, as etapas são atividades a serem iniciadas, atividades em andamento, atividades em análise e atividades concluídas.
 
-### `npm start`
+```
+OBS: Essas atividades são salvas no localStorage.
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ⚙️ Funções
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1 - Primeira função, e onde cria as atividades, com informações de data e hora de criação e titulo.
 
-### `npm test`
+2 - Segunda função, com o icone de play inicia o andamento da atividade.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3 - Terceira função, com o icone de edição e onde edita o titulo da atividade.
+```
+Essa função abre um modal com um input para preencher com determinado titulo 
+```
+4 - Quarta função, caso queira definir um prazo para concluir a atividade, e também poderá exlcuir esse prazo.
+```
+Quando definido uma data de conclusão os cards são renderizados de acordo com a porcentagem que o prazo se encontra,
+e é informado a porcentagem do prazo que se encontra tal atividade, caso ela seja maior que 50%.
+```
+#### Gabarito de Validade
 
-### `npm run build`
+![Gabarito](./src/assets/img/redme/gabarito.png)&nbsp;
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+5 - Quinta função, com o icone de uma lixeira é onde excluí a atividade que se encontra em quase todos os quadros.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+6 - No quadro de atividades em andamento encontra-se um botão para avançar ou retroceder a atividade.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+7 - No quadro de análise a funções podem reprovar ou aprovar uma atividade.
 
-### `npm run eject`
+```
+Aprovando a atividade ela prossegue para o quadro de atividades concluída.
+```
+```
+Reprovando a atividade volta para o primeiro quadro.
+```
+8 - E no ultimo quadro encontra-se somente uma função com o icone de checagem, onde exclúi a atividade.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![Projeto kanban](./src/assets/img/redme/projeto-kanban.png)&nbsp;
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Obs: As funções não está em ordem.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
