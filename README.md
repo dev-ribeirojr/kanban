@@ -1,55 +1,54 @@
 # 🕮 Projeto Kanban
 <p> <img src="https://komarev.com/ghpvc/?username=dev-ribeirojr&color=blue" alt="Profile Views" /> </p>
 
-## 🛠️ Construído com
-![JavaScript](https://img.shields.io/badge/-JavaScript-05122A?style=flar&logo=javascript)&nbsp;
-![HTML](https://img.shields.io/badge/-HTML-05122A?style=flar&logo=HTML5)&nbsp;
-![CSS](https://img.shields.io/badge/-CSS-05122A?style=flar&logo=CSS3&logoColor=1572b6)&nbsp;
-![ReactJS](https://img.shields.io/badge/-ReactJS-05122A?style=flar&logo=react)&nbsp;
+Link: [Acesse aqui.](https://kanban-ribeirojr.netlify.app/).
 
-<a href="https://kanban-ribeirojr.netlify.app/" target="_blank">🔗 Acesse o Projeto Aqui</a>
+## Imagens
 
-## 📌 Sobre o Projeto
-Esse projeto e uma espécie de quadro kanban, que contem quatro etapas, começando do quadro em que se encontra as atividades a serem feitas e que termina no quandro de atividades concluídas, as etapas são atividades a serem iniciadas, atividades em andamento, atividades em análise e atividades concluídas.
+Acompanhe as imagens do projeto em cada página
 
-```
-OBS: Essas atividades são salvas no localStorage.
-```
+### Login e Register
 
-## ⚙️ Funções
+![login](./src/assets/imgReadme/login.png)
+![login](./src/assets/imgReadme/login-loading.png)
+![register](./src/assets/imgReadme/register.png)
 
-1 - Primeira função, e onde cria as atividades, com informações de data e hora de criação e titulo.
+### Home
+![home](./src/assets/imgReadme/home.png)
+![profile](./src/assets/imgReadme/modal-profile.png)
+![search](./src/assets/imgReadme/searchUser.png)
+![profile user](./src/assets/imgReadme/profileUser.png)
+![new frame](./src/assets/imgReadme/new-picture.png)
 
-2 - Segunda função, com o icone de play inicia o andamento da atividade.
+### Frame
+![frame](./src/assets/imgReadme/picture.png)
+![frame](./src/assets/imgReadme/frame.png)
+![frame](./src/assets/imgReadme/frame-mebers.png)
+![frame](./src/assets/imgReadme/frame-add-members.png)
+![frame](./src/assets/imgReadme/frame-members2.png)
+![frame](./src/assets/imgReadme/member-member.png)
 
-3 - Terceira função, com o icone de edição e onde edita o titulo da atividade.
-```
-Essa função abre um modal com um input para preencher com determinado titulo 
-```
-4 - Quarta função, caso queira definir um prazo para concluir a atividade, e também poderá exlcuir esse prazo.
-```
-Quando definido uma data de conclusão os cards são renderizados de acordo com a porcentagem que o prazo se encontra,
-e é informado a porcentagem do prazo que se encontra tal atividade, caso ela seja maior que 50%.
-```
-#### Gabarito de Validade
+### Profile
+![profile](./src/assets/imgReadme/profile.png)
+![profile](./src/assets/imgReadme/profile-edit.png)
 
-![Gabarito](./src/assets/img/redme/gabarito.png)&nbsp;
 
-5 - Quinta função, com o icone de uma lixeira é onde excluí a atividade que se encontra em quase todos os quadros.
+## Sobre
 
-6 - No quadro de atividades em andamento encontra-se um botão para avançar ou retroceder a atividade.
+  Projeto está sendo desenvolvido utilizando React Js, Firebase, Sass, Toastify, React Hook form, React Router Dom, entre outras ferramentas...
+  Até o momento estou disponibilizando o projeto em produção com funções de login, register, gerenciar amigos, quadros, membros. com validações que determinei que seriam necessárias.
+  A ideia de colocar em produção mesmo que não esteja pronto foi para ter opniões e ideias diferentes, erros, bugs, para que possa ser corrigido, e tive alguns retornos de alguns bugs, e já incluí na lista de correções e melhorias.
+  O planejamento e deixar bem completinho e evoluir meus conhecimentos.
+  Algumas funcionalidades a serem acrescentadas são:  
+  ### Funções 
+  Notificações - Quando o usuário estiver participando de um quadro e ocorrer algum gerenciamento dentro do quadro irá receber essa notificação dentro do sistema.
+  Configurações - Configurações de temas
+  Comentarios - Comentar nas atividades 
+  Prazo de conslusão - Adicionar um prazo de válidade as tarefas
+  Determinar membro a executar tal atividade - Adms poderão atribuir tarefas a determinados membros
 
-7 - No quadro de análise a funções podem reprovar ou aprovar uma atividade.
+  Sistema de chat - Essa funcionalidade ainda não é certeza que será implementada mas e algo desáfiador.
 
-```
-Aprovando a atividade ela prossegue para o quadro de atividades concluída.
-```
-```
-Reprovando a atividade volta para o primeiro quadro.
-```
-8 - E no ultimo quadro encontra-se somente uma função com o icone de checagem, onde exclúi a atividade.
+Link: [Acesse aqui.](https://kanban-ribeirojr.netlify.app/).
 
-![Projeto kanban](./src/assets/img/redme/projeto-kanban.png)&nbsp;
-
-Obs: As funções não está em ordem.
 
